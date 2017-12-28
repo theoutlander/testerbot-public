@@ -5,7 +5,6 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const DIR = path.join(os.tmpdir(), 'testerbot_global_setup')
-const Page = require('./src/page')
 
 class PuppeteerEnvironment extends NodeEnvironment {
   constructor (config) {
@@ -23,7 +22,7 @@ class PuppeteerEnvironment extends NodeEnvironment {
       throw new Error('wsEndpoint not found')
     }
 
-    this.global.__PAGE__ = this.global.Page = Page
+    //this.global.__PAGE__ = this.global.Page = Page
 
     this.global.__BROWSER__ = await puppeteer.connect({
       browserWSEndpoint: wsEndpoint,
