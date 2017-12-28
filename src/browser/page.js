@@ -1,45 +1,34 @@
-import cheerio from "cheerio";
+let Doctype = require('./doctype')
+let Html = require('./html')
 
-export default class Page22 {
-  constructor(browser) {
-    this._browser = browser;
+module.exports = class Page {
+  async goto (url) {
+    this.browserPage = await global.__BROWSER__.newPage()
+    this.html = new Html(this)
+    this.doctype = new Doctype(this)
+
+    await this.browserPage.goto(url)
   }
 
-  async goto(url) {
-    try {
-      this._page = await this._browser.newPage();
-      await this._page.goto(url, {
-        waitUntil: "networkidle0"
-        // networkIdleTimeout: 1000
-      });
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-
-    return this;
+  async query (qs) {
+    return await this.browserPage.evaluateHandle((query) => {
+      document.querySelector(query)
+    }, qs)
   }
 
-  html() {
-    this.html;
+  async getElementByTag (tag) {
+    return await this.browserPage.evaluateHandle((tag) => document.getElementsByTagName(tag), tag)
   }
 
-  async close() {
-    await this._page.close();
-    return this;
+  async getElementByClassName (name) {
+    return await this.browserPage.evaluateHandle((name) => document.getElementsByClassName(name), name)
   }
 
-  async screenshot(name = "example.png") {
-    // console.log("Taking a screenshot..");
-    await this._page.screenshot({ path: name });
-    return this;
+  async getElementsByName (tag) {
+    return await this.browserPage.evaluateHandle((tag) => document.getElementsByName(tag), tag)
   }
 
-  async __getHTML() {
-    // console.log("Retrieving HTML");
-    this.html = await this._page.evaluate(
-      () => document.documentElement.outerHTML
-    );
-    return this.html;
+  async getElementById (tag) {
+    return await this.browserPage.evaluateHandle((tag) => document.getElementById(tag), tag)
   }
 }

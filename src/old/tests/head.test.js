@@ -1,5 +1,9 @@
 const timeout = 5000
-const Page = require('../src/page')
+const Page = require('../../browser/page')
+
+// URL
+// Bucket
+// Tests
 
 describe('Head', () => {
     let page = new Page()
@@ -8,12 +12,26 @@ describe('Head', () => {
       await page.goto('http://localhost:5000')
     }, timeout)
 
-    it('A title is used on all pages', async () => {
-      let title = await page.html.head.title()
+    let taggedTitleTest = (tags) => {
 
-      expect(title).not.toBeNull()
-      expect(title.length).toBeLessThanOrEqual(55)
-    })
+      if (tags.includes(globalTagList)) {
+        return () => {
+
+          let test = it('A title is used on all pages', async () => {
+            let title = await page.html.head.title()
+            expect(title).not.toBeNull()
+            expect(title.length).toBeLessThanOrEqual(55)
+          })
+
+          return test
+        }
+      }
+      else {
+        null
+      }
+
+    }
+    (['HTML', 'SEO'])
 
     it('The Doctype is HTML5 and is at the top of all your HTML pages', async () => {
       expect(await page.doctype.markup()).not.toBeNull()
@@ -77,17 +95,17 @@ describe('Head', () => {
       expect(await page.html.direction_attribute()).not.toBeNull()
     })
 
-  // TODO: Enable
-  //   it('Alternate language: The language tag of your website is specified and related to the language of the current page.', async () => {
-  //     expect(await page.html.alternate_language()).not.toBeNull()
-  //   })
+    // TODO: Enable
+    //   it('Alternate language: The language tag of your website is specified and related to the language of the current page.', async () => {
+    //     expect(await page.html.alternate_language()).not.toBeNull()
+    //   })
 
-  // TODO: Enable
-  //   it('Conditional comments: Conditional comments are present for IE if needed.', async () => {
-  //     expect(await page.conditional_comments()).not.toBeNull()
-  //   })
+    // TODO: Enable
+    //   it('Conditional comments: Conditional comments are present for IE if needed.', async () => {
+    //     expect(await page.conditional_comments()).not.toBeNull()
+    //   })
 
-  // TODO: Fix
+    // TODO: Fix
     it('RSS feed: If your project is a blog or has articles, an RSS link was provided.', async () => {
       expect(await page.html.head.rss_feed()).not.toBeNull()
     })

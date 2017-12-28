@@ -39,6 +39,7 @@
     "cheerio": "^1.0.0-rc.2",
     "jest": "^22.0.4",
     "jest-dashboard": "^0.2.1",
+    "node-dir": "^0.1.17",
     "puppeteer": "^0.13.0"
   },
   "devDependencies": {
