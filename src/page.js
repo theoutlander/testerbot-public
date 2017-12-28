@@ -1,6 +1,9 @@
+let Html = require('./html')
+
 module.exports = class Page {
   async goto(url) {
     this.page = await global.__BROWSER__.newPage()
+    this.html = new Html(this.page)
     await this.page.goto(url)
   }
 
@@ -62,24 +65,12 @@ module.exports = class Page {
   }
 
   async query(qs) {
+    console.log(qs)
     return await this.page.evaluateHandle(() => document.querySelector(qs))
   }
 
   async canonical() {
     return await this.query('link[rel="canonical"]')
-  }
-
-  async language_attribute() {
-    //Language attribute: The <code>lang</code> attribute of your website is specified and related to the language of the current page.
-    return await this.page.evaluateHandle(() => document.head.querySelector('meta[name="viewport"]'))
-  }
-
-  async direction_attribute() {
-    return await this.page.evaluateHandle(() => document.head.querySelector('meta[name="viewport"]'))
-  }
-
-  async alternate_language() {
-    return await this.page.evaluateHandle(() => document.head.querySelector('meta[name="viewport"]'))
   }
 
   async conditional_comments() {

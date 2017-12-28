@@ -34,6 +34,7 @@ describe('Head', () => {
     it('Description: A meta description is provided, it is unique and doesn\'t possess more than 150 characters.', async () => {
       let description = page.meta_description()
       expect(description).not.toBeNull()
+      expect(description.content).not.toBeNull()
       expect(description.content.toString().length).toBeLessThanOrEqual(150)
     })
 
@@ -42,7 +43,7 @@ describe('Head', () => {
       expect(favicon).not.toBeNull()
       expect(favicon.href).not.toBeNull()
 
-      if (favicon.href.includes('.ico')) {
+      if (favicon.href.indexOf('.ico')>0) {
         console.warn('If you have only a favicon.ico, put it at the root of your site. Normally you won\'t need to use any markup. ' +
           'However, it\'s still good practice to link to it using the example below. Today, PNG format is recommended over .ico ' +
           'format (dimensions: 32x32px).')
@@ -62,15 +63,17 @@ describe('Head', () => {
     })
 
     it('Language attribute: The <code>lang</code> attribute of your website is specified and related to the language of the current page.', async () => {
-      expect(await page.language_attribute()).not.toBeNull()
+      let lang = page.html.language_attribute()
+      expect(await lang).not.toBeNull()
+      // check lang is one of accepted values
     })
 
     it('Direction attribute: The direction of lecture is specified on the html tag (It can be used on another HTML tag).', async () => {
-      expect(await page.direction_attribute()).not.toBeNull()
+      expect(await page.html.direction_attribute()).not.toBeNull()
     })
 
     it('Alternate language: The language tag of your website is specified and related to the language of the current page.', async () => {
-      expect(await page.alternate_language()).not.toBeNull()
+      expect(await page.html.alternate_language()).not.toBeNull()
     })
 
     it('Conditional comments: Conditional comments are present for IE if needed.', async () => {
