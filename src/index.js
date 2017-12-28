@@ -1,3 +1,3 @@
-import main from './main.js'
+let jest = require("jest");
 
-main.run()
+jest.runCLI({ onlyChanged: true }, __dirname, function(success) {});

@@ -1,4 +1,5 @@
 {
-  "presets": ["babel-preset-env"],
-//  "plugins": ["transform-runtime", "syntax-object-rest-spread", "transform-object-rest-spread"]
+  "presets": ["babel-preset-env", "stage-0"],
+  "plugins": ["babel-polyfill", "transform-runtime"]
+//  "plugins": ["babel-polyfill", "transform-runtime", "syntax-object-rest-spread", "transform-object-rest-spread"]
 }
