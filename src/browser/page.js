@@ -19,6 +19,10 @@ module.exports = class Page {
     // }, qs)
   }
 
+  async content() {
+    return await this.browserPage.content()
+  }
+
   async getElementByTag (tag) {
     return this.browserPage.evaluateHandle((tag) => document.getElementsByTagName(tag), tag)
   }

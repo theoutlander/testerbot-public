@@ -4,6 +4,7 @@ module.exports = class Doctype {
   }
 
   async markup () {
-    return this.page.query('document.doctype')
+    return this.page.content().doctype
+    //return this.page.query('document.doctype')
   }
 }
