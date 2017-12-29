@@ -2,15 +2,18 @@
   "name": "testerbot",
   "version": "0.0.1",
   "description": "Automatic Front-End Testing",
-  "main": "./dist/app.js",
+  "main": "./src/index.js",
+  "bin": {
+    "testerbot": "./src/index.js"
+  },
   "scripts": {
     "build": "babel ./src --out-dir ./dist --source-maps inline --ignore spec.js,test.js",
     "build-watch": "babel ./src --watch --out-dir ./dist --source-maps inline --ignore spec.js,test.js",
     "start": "node ./dist/index.js",
     "start-debug": "node --inspect-brk ./dist/index.js",
-    "test": "jest -i testerbot/tests --config jest.config.js",
-    "test-debug": "node --inspect-brk ./node_modules/.bin/jest -i testerbot/tests --config jest.config.js",
-    "test-watch": "NODE_ENV=test jest -i testerbot/tests --config jest.config.js --watch --notify",
+    "test": "jest --config ./src/jest.config.js",
+    "test-debug": "node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js",
+    "test-watch": "NODE_ENV=test jest --config ./src/jest.config.js --watch --notify",
     "test-dashboard": "NODE_ENV=dashboard npm run test -- --reporters jest-dashboard",
     "test-debug-dashboard": "npm run test-debug -- --reporters jest-dashboard",
     "test-watch-dashboard": "npm run test-watch -- --reporters jest-dashboard"
@@ -62,6 +65,11 @@
       "src/packages/express-enrouten"
     ],
     "parser": "babel-eslint",
-    "globals": ["describe", "it", "expect", "beforeAll"]
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "beforeAll"
+    ]
   }
 }

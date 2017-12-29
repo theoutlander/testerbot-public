@@ -1,7 +1,6 @@
 module.exports = {
   urls: [
-    'http://localhost:5000',
-    'http://www.google.com'
+    'http://localhost:5000'
   ],
 
   skipTests: [
