@@ -70,6 +70,35 @@ module.exports = class Head {
     return this.page.query('meta[name="viewport"]')
   }
 
+  //FB Open Graph
+  async facebook_og_title () {
+    return this.page.query('meta[name="og:title"]')
+  }
+
+  async facebook_og_type () {
+    return this.page.query('meta[name="og:type"]')
+  }
+
+  async facebook_og_url () {
+    return this.page.query('meta[name="og:url"]')
+  }
+
+  async facebook_og_image () {
+    return this.page.query('meta[name="og:image"]')
+  }
+
+  async facebook_og_site_name () {
+    return this.page.query('meta[name="og:site_name"]')
+  }
+
+  async facebook_og_description () {
+    return this.page.query('meta[name="og:description"]')
+  }
+
+  async facebook_page_id () {
+    return this.page.query('meta[name="fb:page_id"]')
+  }
+
   async twitter_og () {
     return this.page.query('meta[name="viewport"]')
   }
