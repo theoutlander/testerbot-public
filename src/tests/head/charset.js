@@ -1,8 +1,8 @@
 module.exports = {
   name: 'Charset',
-  desc: 'X-UA-Compatible: The X-UA-Compatible Meta tag is present',
+  desc: 'The charset declared (UTF-8) is declared correctly',
   suite: 'Head',
-  tags: ['HTML', 'SEO'],
+  tags: ['META'],
 
   // https://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type
   test: (page) => async () => {
