@@ -5,7 +5,9 @@ module.exports = {
 
   // Test name(s) go here
   skipTests: [
-    'Junk Test Name'
+    'Junk Test Name',
+    'Open Graph',
+    'X-UA-Compatible'
   ],
 
   // Test name(s) go here

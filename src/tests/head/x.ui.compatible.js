@@ -6,6 +6,6 @@ module.exports = {
 
   // https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do
   test: (page) => async () => {
-      expect(await page.html.head.x_ua_compatible()).not.toBeNull()
+    expect(await page.html.head.x_ua_compatible()).not.toBeNull()
   }
 }
