@@ -29,19 +29,19 @@ describe('Head', () => {
   }
   (['HTML', 'SEO'])
 
-  it('The Doctype is HTML5 and is at the top of all your HTML pages', async () => {
-    expect(await page.doctype.markup()).not.toBeNull()
-  })
+  // it('The Doctype is HTML5 and is at the top of all your HTML pages', async () => {
+  //   expect(await page.doctype.markup()).not.toBeNull()
+  // })
 
     // https://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type
-  it('Charset: The charset declared (UTF-8) is declared correctly', async () => {
-    expect(await page.html.head.charset()).not.toBeNull()
-  })
+  // it('Charset: The charset declared (UTF-8) is declared correctly', async () => {
+  //   expect(await page.html.head.charset()).not.toBeNull()
+  // })
 
-    // https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do
-  it('X-UA-Compatible: The X-UA-Compatible Meta tag is present.', async () => {
-    expect(await page.html.head.x_ua_compatible()).not.toBeNull()
-  })
+  //   // https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do
+  // it('X-UA-Compatible: The X-UA-Compatible Meta tag is present.', async () => {
+  //   expect(await page.html.head.x_ua_compatible()).not.toBeNull()
+  // })
 
   it('Viewport: The viewport is declared correctly.', async () => {
     expect(await page.html.head.viewport()).not.toBeNull()
