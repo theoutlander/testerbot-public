@@ -5,8 +5,6 @@ module.exports = {
   tags: ['META'],
 
   test: (page) => async () => {
-    let d = await page.doctype.markup()
-    debugger
-    expect(d).not.toBeNull()
+    expect(await page.doctype.markup()).not.toBeNull()
   }
 }
