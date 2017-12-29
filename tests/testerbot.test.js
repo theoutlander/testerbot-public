@@ -2,13 +2,11 @@ const timeout = 5000
 
 let dir = require('node-dir')
 let path = require('path')
-let fs = require('fs')
+// let fs = require('fs')
 
 let Page = require('../src/browser/page')
 
-let baseConfig = {
-
-}
+let baseConfig = {}
 
 // Read Config
 let userConfig = require(path.join(__dirname, '../', 'testerbot.config.js'))
@@ -19,25 +17,28 @@ let config = Object.assign({}, baseConfig, userConfig)
 config.urls.forEach(url => {
   // Create suite
   describe(`Page: ${url}`, () => {
-      let page = new Page()
+    let page = new Page()
 
-      beforeAll(async () => {
-        await page.goto(url)
-      }, timeout)
+    beforeAll(async () => {
+      await page.goto(url)
+    }, timeout)
 
-      // Get all test files
-      let files = dir.files(config.dir, {sync: true})
+    // Get all test files
+    let files = dir.files(config.dir, {sync: true})
 
-      // for each test file
-      files.forEach(f => {
-        // let parent = path.basename(path.dirname(f))
-        // read file content
-        // let data = fs.readFileSync(f, 'utf8')
-        let filePath = path.join(__dirname, '../', f)
+    // for each test file
+    files.forEach(f => {
+      // let parent = path.basename(path.dirname(f))
+      // read file content
+      // let data = fs.readFileSync(f, 'utf8')
 
-        var testFile = require(filePath)
+      let filePath = path.join(__dirname, '../', f)
 
-        it(testFile.name, testFile.test(page))
-      })
+      var testFile = require(filePath)
+
+      if (!config.skipTests.includes(testFile.name)) {
+        it(`${testFile.name}:${testFile.desc}`, testFile.test(page))
+      }
+    })
   })
 })

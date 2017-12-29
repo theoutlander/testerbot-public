@@ -11,24 +11,24 @@ module.exports = class Page {
   }
 
   async query (qs) {
-    return await this.browserPage.evaluateHandle((query) => {
+    return this.browserPage.evaluateHandle((query) => {
       document.querySelector(query)
     }, qs)
   }
 
   async getElementByTag (tag) {
-    return await this.browserPage.evaluateHandle((tag) => document.getElementsByTagName(tag), tag)
+    return this.browserPage.evaluateHandle((tag) => document.getElementsByTagName(tag), tag)
   }
 
   async getElementByClassName (name) {
-    return await this.browserPage.evaluateHandle((name) => document.getElementsByClassName(name), name)
+    return this.browserPage.evaluateHandle((name) => document.getElementsByClassName(name), name)
   }
 
   async getElementsByName (tag) {
-    return await this.browserPage.evaluateHandle((tag) => document.getElementsByName(tag), tag)
+    return this.browserPage.evaluateHandle((tag) => document.getElementsByName(tag), tag)
   }
 
   async getElementById (tag) {
-    return await this.browserPage.evaluateHandle((tag) => document.getElementById(tag), tag)
+    return this.browserPage.evaluateHandle((tag) => document.getElementById(tag), tag)
   }
 }

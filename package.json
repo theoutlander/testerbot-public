@@ -56,5 +56,12 @@
     "prettier-standard": "^8.0.0",
     "standardjs": "^1.0.0-alpha",
     "transform-runtime": "0.0.0"
+  },
+  "standard": {
+    "ignore": [
+      "src/packages/express-enrouten"
+    ],
+    "parser": "babel-eslint",
+    "globals": ["describe", "it", "expect", "beforeAll"]
   }
 }

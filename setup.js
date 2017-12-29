@@ -7,7 +7,7 @@ const path = require('path')
 
 const DIR = path.join(os.tmpdir(), 'testerbot_global_setup')
 
-module.exports = async function() {
+module.exports = async function () {
   if (process.env.NODE_ENV !== 'dashboard') {
     console.log(chalk.green('Setup Puppeteer Environment.'))
   }

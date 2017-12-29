@@ -7,9 +7,9 @@ const path = require('path')
 const DIR = path.join(os.tmpdir(), 'testerbot_global_setup')
 
 class PuppeteerEnvironment extends NodeEnvironment {
-  constructor (config) {
-    super(config)
-  }
+  // constructor (config) {
+  //   super(config)
+  // }
 
   async setup () {
     if (process.env.NODE_ENV !== 'dashboard') {
@@ -22,10 +22,10 @@ class PuppeteerEnvironment extends NodeEnvironment {
       throw new Error('wsEndpoint not found')
     }
 
-    //this.global.__PAGE__ = this.global.Page = Page
+    // this.global.__PAGE__ = this.global.Page = Page
 
     this.global.__BROWSER__ = await puppeteer.connect({
-      browserWSEndpoint: wsEndpoint,
+      browserWSEndpoint: wsEndpoint
     })
   }
 

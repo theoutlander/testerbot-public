@@ -3,10 +3,7 @@ module.exports = class Body {
     this.page = page
   }
 
-  async markup() {
-    return await this.page.query('document.body')
+  async markup () {
+    return this.page.query('document.body')
   }
-
-
-
 }

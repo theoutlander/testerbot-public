@@ -3,8 +3,7 @@ module.exports = class Doctype {
     this.page = page
   }
 
-  async markup() {
-    return await this.page.query('document.doctype');
+  async markup () {
+    return this.page.query('document.doctype')
   }
-
 }

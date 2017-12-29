@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'Test Name',
-  desc: 'This is a test blah blah',
+  name: 'Title',
+  desc: 'A title is used on all pages',
   suite: 'Head',
   tags: ['HTML', 'SEO'],
 

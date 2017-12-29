@@ -19,7 +19,7 @@ testerbot [--reporters jest-dashboard]
 
 ## Pre-defined Test Cases
 
-## Mutliple pages (multiple urls) running all tests
+## Multiple pages (multiple urls) running all tests
 
 ## Disable tests (Warning results)
 
@@ -33,31 +33,26 @@ testerbot [--reporters jest-dashboard]
 
 # Todo
 ## v1
-- Basic config file
- - Multiple URL's
- - Globally Disable Tests
+[X]  Basic config file
+  [X] Multiple URL's
+  [X] Globally Disable Tests
+[X] Dynamic test execution
+
+[ ] Predefined test cases
  
-- Dynamic test execution
-
-- Predefined test cases
- - Name
- - Desc
- - Test
- - Tags
-
-- Command to run tests after you install module
-- Deploy to NPM
+[ ] Command to run tests after you install module
+[ ] Deploy to NPM
 
 ## v2
-- Authentication
-- Scenarios
-- Tags
-- Custom Reporter
-- Command line params
-- Warning status (Pass/Fail/Warning)
+[ ] Authentication
+[ ] Scenarios
+[ ] Tags
+[ ] Custom Reporter
+[ ] Command line params
+[ ] Warning status (Pass/Fail/Warning)
 
 ## v3 
-- Automatic Crawling
+[ ] Automatic Crawling
 
 # License
 

@@ -1,3 +1,3 @@
-let jest = require("jest");
+let jest = require('jest')
 
-jest.runCLI({ onlyChanged: true }, __dirname, function(success) {});
+jest.runCLI({ onlyChanged: true }, __dirname, function (success) {})
