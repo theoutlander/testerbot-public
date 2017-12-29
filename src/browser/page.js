@@ -11,9 +11,12 @@ module.exports = class Page {
   }
 
   async query (qs) {
-    return this.browserPage.evaluateHandle((query) => {
-      document.querySelector(query)
-    }, qs)
+
+    return this.browserPage.$(qs)
+
+    // return this.browserPage.evaluateHandle((query) => {
+    //   document.querySelector(query)
+    // }, qs)
   }
 
   async getElementByTag (tag) {

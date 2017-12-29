@@ -5,7 +5,7 @@ module.exports = {
     tags: ['HTML', 'SEO', 'SOCIAL'],
 
     test: (page) => async () => {
-        expect(await page.html.head.facebook_og_title()).not.toBeNull()
+        expect(page.html.head.facebook_og_title()).not.toBeNull()
         expect(await page.html.head.facebook_og_type()).not.toBeNull()
         expect(await page.html.head.facebook_og_url()).not.toBeNull()
         expect(await page.html.head.facebook_og_image()).not.toBeNull()

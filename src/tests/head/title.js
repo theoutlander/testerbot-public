@@ -5,6 +5,6 @@ module.exports = {
   tags: ['HTML', 'SEO'],
 
   test: (page) => async () => {
-    expect(await page.doctype.markup()).not.toBeNull()
+    expect(await page.html.head.title()).not.toBeNull()
   }
 }

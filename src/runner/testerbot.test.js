@@ -36,7 +36,7 @@ config.urls.forEach(url => {
 
       var testFile = require(filePath)
 
-      if (!config.skipTests.includes(testFile.name)) {
+      if (!config.skipTests.includes(testFile.name) && (!config.onlyTest || config.onlyTest <= 0 || config.onlyTest.includes(testFile.name))) {
         it(`${testFile.name}:${testFile.desc}`, testFile.test(page))
       }
     })
