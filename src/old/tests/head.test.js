@@ -43,17 +43,17 @@ describe('Head', () => {
   //   expect(await page.html.head.x_ua_compatible()).not.toBeNull()
   // })
 
-  it('Viewport: The viewport is declared correctly.', async () => {
-    expect(await page.html.head.viewport()).not.toBeNull()
-  })
+  // it('Viewport: The viewport is declared correctly.', async () => {
+  //   expect(await page.html.head.viewport()).not.toBeNull()
+  // })
 
-  it('Description: A meta description is provided, it is unique and doesn\'t possess more than 150 characters.', async () => {
-    let description = page.html.head.meta_description()
-    expect(description).not.toBeNull()
-    expect(description.content).not.toBeNull()
-      // TODO: Enable, handle as warning
-      // expect(description.content.toString().length).toBeLessThanOrEqual(150)
-  })
+  // it('Description: A meta description is provided, it is unique and doesn\'t possess more than 150 characters.', async () => {
+  //   let description = page.html.head.meta_description()
+  //   expect(description).not.toBeNull()
+  //   expect(description.content).not.toBeNull()
+  //     // TODO: Enable, handle as warning
+  //     // expect(description.content.toString().length).toBeLessThanOrEqual(150)
+  // })
 
   it('Favicons: Each favicon has been created and displays correctly.', async () => {
     let favicon = await page.html.head.favicon()
@@ -116,10 +116,10 @@ describe('Head', () => {
     //   expect(await page.html.head.markup() css_order()).not.toBeNull()
     // })
 
-    // TODO: Implement
-  it('Facebook Open Graph:', async () => {
-    expect(await page.html.head.facebook_og()).not.toBeNull()
-  })
+  //   // TODO: Implement
+  // it('Facebook Open Graph:', async () => {
+  //   expect(await page.html.head.facebook_og()).not.toBeNull()
+  // })
 
     // TODO: Implement
   it('Twitter Card:', async () => {

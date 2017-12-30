@@ -36,8 +36,30 @@ config.urls.forEach(url => {
 
       var testFile = require(filePath)
 
-      if (!config.skipTests.includes(testFile.name) && (!config.onlyTest || config.onlyTest <= 0 || config.onlyTest.includes(testFile.name))) {
-        it(`${testFile.name}:${testFile.desc}`, testFile.test(page))
+      if (!config.skipTests.includes(testFile.name) &&
+        (!config.onlyTest ||
+          config.onlyTest <= 0 ||
+          config.onlyTest.includes(testFile.name))) {
+
+        if (Array.isArray(testFile.test))
+        {
+          testFile.test.forEach(testcase => {
+            // Assuming it's an object if the desc property is defined
+            if (testcase.desc)
+            {
+              it(`${testFile.name}:${testcase.desc}`, testcase.test(page))
+            }
+            else {
+              debugger
+              let testDesc = Object.keys(testcase)[0]
+              let test = testcase[testDesc]
+              it(`${testFile.name}:${testDesc}`, test(page))
+            }
+          })
+        }
+        else{
+          it(`${testFile.name}:${testFile.desc}`, testFile.test(page))
+        }
       }
     })
   })
