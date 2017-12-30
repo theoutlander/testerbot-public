@@ -46,7 +46,6 @@ module.exports = class Head {
   }
 
   async windows_tiles () {
-    debugger
     return this.page.query('meta[name="msapplication-config"][content="browserconfig.xml"]')
   }
 

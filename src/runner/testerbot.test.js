@@ -6,25 +6,28 @@ let path = require('path')
 
 let Page = require('../browser/page')
 
-let baseConfig = {}
+// let baseConfig = {}
 
 // Read Config
 let userConfig = require(path.join(__dirname, '../../', 'testerbot.config.js'))
 
-let config = Object.assign({}, baseConfig, userConfig)
+// let config = Object.assign({}, baseConfig, userConfig)
+
+let testerbotDir = './src/__testerbot__'
 
 // For each url
-config.urls.forEach(url => {
+userConfig.forEach(item => {
+
   // Create suite
-  describe(`Page: ${url}`, () => {
+  describe(`Page: ${item.url}`, () => {
     let page = new Page()
 
     beforeAll(async () => {
-      await page.goto(url)
+      await page.goto(item.url)
     }, timeout)
 
     // Get all test files
-    let files = dir.files(config.dir, {sync: true})
+    let files = dir.files(testerbotDir, {sync: true})
 
     // for each test file
     files.forEach(f => {
@@ -36,10 +39,10 @@ config.urls.forEach(url => {
 
       var testFile = require(filePath)
 
-      if (!config.skipTests.includes(testFile.name) &&
-        (!config.onlyTest ||
-          config.onlyTest <= 0 ||
-          config.onlyTest.includes(testFile.name))) {
+      if ((!item.tests.skip || !item.tests.skip.includes(testFile.name)) &&
+        (!item.test.filter ||
+          item.test.filter <= 0 ||
+          item.test.filter.includes(testFile.name))) {
 
         if (Array.isArray(testFile.test))
         {
@@ -50,7 +53,6 @@ config.urls.forEach(url => {
               it(`${testFile.name}:${testcase.desc}`, testcase.test(page))
             }
             else {
-              debugger
               let testDesc = Object.keys(testcase)[0]
               let test = testcase[testDesc]
               it(`${testFile.name}:${testDesc}`, test(page))
