@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Language Attribute',
   desc: 'The <code>lang</code> attribute of your website is specified and related to the language of the current page',
-  suite: 'Head',
+  suite: 'Html',
   tags: ['HTML'],
 
   test: (page) => async () => {

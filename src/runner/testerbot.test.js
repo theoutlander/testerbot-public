@@ -44,23 +44,28 @@ userConfig.forEach(item => {
           item.tests.filter <= 0 ||
           item.tests.filter.includes(testFile.name))) {
 
-        if (Array.isArray(testFile.test))
-        {
+        if (Array.isArray(testFile.test)) {
           testFile.test.forEach(testcase => {
             // Assuming it's an object if the desc property is defined
-            if (testcase.desc)
-            {
-              it(`${testFile.name}:${testcase.desc}`, testcase.test(page))
+            if (testcase.desc) {
+              describe(`${testFile.suite}`, () => {
+                it(`${testFile.name}:${testcase.desc}`, testcase.test(page))
+              })
             }
             else {
               let testDesc = Object.keys(testcase)[0]
               let test = testcase[testDesc]
-              it(`${testFile.name}:${testDesc}`, test(page))
+
+              describe(`${testFile.suite}`, () => {
+                it(`${testFile.name}:${testDesc}`, test(page))
+              })
             }
           })
         }
-        else{
-          it(`${testFile.name}:${testFile.desc}`, testFile.test(page))
+        else {
+          describe(`${testFile.suite}`, () => {
+            it(`${testFile.name}:${testFile.desc}`, testFile.test(page))
+          })
         }
       }
     })
