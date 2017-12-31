@@ -10,7 +10,7 @@ module.exports = class Html {
 
   async language_attribute () {
     // Language attribute: The <code>lang</code> attribute of your website is specified and related to the language of the current page.
-    return this.page.query('meta[name="viewport"]').lang
+    return this.page.query('html')
   }
 
   async alternate_language () {

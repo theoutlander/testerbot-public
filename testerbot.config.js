@@ -12,7 +12,6 @@ module.exports = [{
 
     // Test name(s) go here
     filter: [
-
     ]
   }
 }]

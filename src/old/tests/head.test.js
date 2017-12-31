@@ -1,14 +1,5 @@
-  it('Favicons: Each favicon has been created and displays correctly.', async () => {
-    let favicon = await page.html.head.favicon()
-    expect(favicon).not.toBeNull()
-    expect(favicon).not.toBeNull()
-    expect(favicon.href).not.toBeNull()
+  it('Favicons: .', async () => {
 
-      // if (favicon.href.indexOf('.ico')>0) {
-      //   console.warn('If you have only a favicon.ico, put it at the root of your site. Normally you won\'t need to use any markup. ' +
-      //     'However, it\'s still good practice to link to it using the example below. Today, PNG format is recommended over .ico ' +
-      //     'format (dimensions: 32x32px).')
-      // }
   })
 
   it('Apple Web App Meta: Apple meta-tags are present.\n', async () => {
@@ -20,12 +11,6 @@
 
   it('Canonical: Use rel="canonical" to avoid duplicate content.', async () => {
     expect(await page.html.head.canonical()).not.toBeNull()
-  })
-
-  it('Language attribute: The <code>lang</code> attribute of your website is specified and related to the language of the current page.', async () => {
-    let lang = page.html.language_attribute()
-    expect(await lang).not.toBeNull()
-      // check lang is one of accepted values
   })
 
   it('Direction attribute: The direction of lecture is specified on the html tag (It can be used on another HTML tag).', async () => {
