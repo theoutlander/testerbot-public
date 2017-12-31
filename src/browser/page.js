@@ -12,14 +12,25 @@ module.exports = class Page {
 
   async query (qs) {
 
-    return this.browserPage.$(qs)
+    let handle = await this.browserPage.$(qs)
+    if(!handle) {
+      return null
+    }
 
-    // return this.browserPage.evaluateHandle((query) => {
-    //   document.querySelector(query)
-    // }, qs)
+    let jsHandle = await handle.getProperty('outerHTML')
+    if (!jsHandle) {
+      return null
+    }
+    let val = await jsHandle.jsonValue()
+    // let item =  this.browserPage.evaluateHandle((item) => {
+    //   // document.querySelector(query)
+    //   return item
+    // }, handle)
+
+    return val
   }
 
-  async content() {
+  async content () {
     return await this.browserPage.content()
   }
 

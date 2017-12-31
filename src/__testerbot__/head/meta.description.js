@@ -5,7 +5,8 @@ module.exports = {
   tags: ['META'],
 
   test: (page) => async () => {
-    let description = page.html.head.meta_description()
+
+    let description = await page.html.head.meta_description()
     expect(description).not.toBeNull()
     expect(description.content).not.toBeNull()
     // TODO: Enable, handle as warning

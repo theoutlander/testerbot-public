@@ -40,9 +40,9 @@ userConfig.forEach(item => {
       var testFile = require(filePath)
 
       if ((!item.tests.skip || !item.tests.skip.includes(testFile.name)) &&
-        (!item.test.filter ||
-          item.test.filter <= 0 ||
-          item.test.filter.includes(testFile.name))) {
+        (!item.tests.filter ||
+          item.tests.filter <= 0 ||
+          item.tests.filter.includes(testFile.name))) {
 
         if (Array.isArray(testFile.test))
         {

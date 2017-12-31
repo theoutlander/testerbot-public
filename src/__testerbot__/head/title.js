@@ -5,6 +5,7 @@ module.exports = {
   tags: ['HTML', 'SEO'],
 
   test: (page) => async () => {
-    expect(await page.html.head.title()).not.toBeNull()
+    let title = await page.html.head.title()
+    expect(title).not.toBeNull()
   }
 }

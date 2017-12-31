@@ -1,60 +1,3 @@
-const timeout = 5000
-const Page = require('../../browser/page')
-
-// URL
-// Bucket
-// Tests
-
-describe('Head', () => {
-  let page = new Page()
-
-  beforeAll(async () => {
-    await page.goto('http://localhost:5000')
-  }, timeout)
-
-  let taggedTitleTest = (tags) => {
-    if (tags.includes(globalTagList)) {
-      return () => {
-        let test = it('A title is used on all pages', async () => {
-          let title = await page.html.head.title()
-          expect(title).not.toBeNull()
-          expect(title.length).toBeLessThanOrEqual(55)
-        })
-
-        return test
-      }
-    } else {
-      null
-    }
-  }
-  (['HTML', 'SEO'])
-
-  // it('The Doctype is HTML5 and is at the top of all your HTML pages', async () => {
-  //   expect(await page.doctype.markup()).not.toBeNull()
-  // })
-
-    // https://stackoverflow.com/questions/4696499/meta-charset-utf-8-vs-meta-http-equiv-content-type
-  // it('Charset: The charset declared (UTF-8) is declared correctly', async () => {
-  //   expect(await page.html.head.charset()).not.toBeNull()
-  // })
-
-  //   // https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do
-  // it('X-UA-Compatible: The X-UA-Compatible Meta tag is present.', async () => {
-  //   expect(await page.html.head.x_ua_compatible()).not.toBeNull()
-  // })
-
-  // it('Viewport: The viewport is declared correctly.', async () => {
-  //   expect(await page.html.head.viewport()).not.toBeNull()
-  // })
-
-  // it('Description: A meta description is provided, it is unique and doesn\'t possess more than 150 characters.', async () => {
-  //   let description = page.html.head.meta_description()
-  //   expect(description).not.toBeNull()
-  //   expect(description.content).not.toBeNull()
-  //     // TODO: Enable, handle as warning
-  //     // expect(description.content.toString().length).toBeLessThanOrEqual(150)
-  // })
-
   it('Favicons: Each favicon has been created and displays correctly.', async () => {
     let favicon = await page.html.head.favicon()
     expect(favicon).not.toBeNull()
@@ -73,9 +16,7 @@ describe('Head', () => {
       // expect(await page.apple_meta_tags()).not.toBeNull()
   })
 
-  it('Windows Tiles: Windows tiles are present and linked.', async () => {
-    expect(await page.html.head.windows_tiles()).not.toBeNull()
-  })
+
 
   it('Canonical: Use rel="canonical" to avoid duplicate content.', async () => {
     expect(await page.html.head.canonical()).not.toBeNull()
@@ -116,15 +57,7 @@ describe('Head', () => {
     //   expect(await page.html.head.markup() css_order()).not.toBeNull()
     // })
 
-  //   // TODO: Implement
-  // it('Facebook Open Graph:', async () => {
-  //   expect(await page.html.head.facebook_og()).not.toBeNull()
-  // })
-
     // TODO: Implement
   it('Twitter Card:', async () => {
     expect(await page.html.head.twitter_og()).not.toBeNull()
   })
-},
-  timeout
-)

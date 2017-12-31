@@ -20,7 +20,10 @@ module.exports = class Head {
   }
 
   async viewport () {
-    return this.page.query('meta[name="viewport"]')
+    return await this.page.query('meta[name="viewport"]')
+    // let handle = await this.page.query('meta[name="viewport"]')
+    // const html = await this.page.browserPage.evaluate(viewport => viewport.innerHTML, handle);
+    // return html
   }
 
   async favicon () {
@@ -65,38 +68,34 @@ module.exports = class Head {
     return this.page.query('meta[name="viewport"]')
   }
 
-  async facebook_og () {
-    return this.page.query('meta[name="viewport"]')
-  }
-
   //FB Open Graph
   async facebook_og_title () {
-    return this.page.query('meta[name="og:title"]')
+    return this.page.query('meta[property="og:title"]')
   }
 
   async facebook_og_type () {
-    return this.page.query('meta[name="og:type"]')
+    return this.page.query('meta[property="og:type"]')
   }
 
   async facebook_og_url () {
-    return this.page.query('meta[name="og:url"]')
+    return this.page.query('meta[property="og:url"]')
   }
 
   async facebook_og_image () {
-    return this.page.query('meta[name="og:image"]')
+    return this.page.query('meta[property="og:image"]')
   }
 
   async facebook_og_site_name () {
-    return this.page.query('meta[name="og:site_name"]')
+    return this.page.query('meta[property="og:site_name"]')
   }
 
   async facebook_og_description () {
-    return this.page.query('meta[name="og:description"]')
+    return this.page.query('meta[property="og:description"]')
   }
 
-  async facebook_page_id () {
-    return this.page.query('meta[name="fb:page_id"]')
-  }
+  // async facebook_page_id () {
+  //   return this.page.query('meta[property="fb:page_id"]')
+  // }
 
   async twitter_og () {
     return this.page.query('meta[name="viewport"]')

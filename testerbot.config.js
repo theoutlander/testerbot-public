@@ -1,13 +1,13 @@
 module.exports = [{
   url:
-    'http://localhost:5000',
+    'http://localhost:8080',
 
   tests: {
     // Test name(s) go here
     skip: [
       'Junk Test Name',
-      'Open Graph',
-      'X-UA-Compatible'
+      'Open Graph2',
+      'X-UA-Compatible12'
     ],
 
     // Test name(s) go here
