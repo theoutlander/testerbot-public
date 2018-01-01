@@ -5,13 +5,12 @@ let config = require('./config')
 
 config.process()
 
-jest.runCLI({
-    onlyChanged: false,
-    config: config.getJestConfig(),
-    globals: JSON.stringify({TESTERBOT: config.getConfig()})
-  },
-  config.getTestFolders()
-  ,
-  function (success) {
-    console.log(success)
-  })
+let options = {
+  onlyChanged: false,
+  config: config.getJestConfig(),
+  // verbose: config.getVerbose(),
+  // silent: config.getSilent(),
+  globals: JSON.stringify({TESTERBOT: config.getConfig()})
+}
+
+jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })
