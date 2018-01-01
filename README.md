@@ -48,6 +48,10 @@ testerbot --urls http://localhost:5000,http://localhost:5000/toc.html
 
 ### Testerbot Configuration
 
+You can also run *Testerbot* by providing a configuration file which allows you to skip specific tests or run only specific tests. 
+
+By default, it will look for *testerbot.config.js* in your project root:
+
 ```
 // Testerbot Run Configuration
 
@@ -70,6 +74,12 @@ module.exports = [{
     ]
   }
 }]
+```
+
+You may also specify a path to the config file via:
+
+```
+testerbot --config ./config/testerbot.config.js
 ```
 
 # Basic Features
