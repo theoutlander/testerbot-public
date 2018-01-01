@@ -15,6 +15,8 @@ During development, there isn't enough time to write tests, so our only option i
 
 We created *Testerbot* to automatically test web-applications during the development process. This is a work-in-progress and we would like your help by contributing to this project either via code, testing or feedback.
 
+Note: I started this project several months ago and built a SaaS product, but realized that an open-source test automation package is will help catch issues quickly during development. I recently stumbled upon https://frontendchecklist.io/ and created github issues to automate as many of those tests as possible into *Testerbot*.
+
 ## Install
 
 ```
