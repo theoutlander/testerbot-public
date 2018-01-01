@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
-let path = require('path')
 let jest = require('jest')
+let config = require('./config')
 
-console.log(__dirname)
+config.process()
 
 jest.runCLI({
     onlyChanged: false,
-    config: './src/jest.config.js'
+    config: config.getJestConfig(),
+    globals: JSON.stringify({TESTERBOT: config.getConfig()})
   },
-  [path.resolve(__dirname, 'runner')],
+  config.getTestFolders()
+  ,
   function (success) {
     console.log(success)
   })

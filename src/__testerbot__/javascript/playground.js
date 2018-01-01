@@ -3,6 +3,7 @@ module.exports = {
   desc: 'Not sure',
   suite: 'Javascript',
   tags: ['JAVASCRIPT'],
+  skip: true,
 
   test: (page) => async () => {
     // let tags = await page.getScripts()

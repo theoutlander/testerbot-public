@@ -41,10 +41,12 @@
     "babel-regenerator-runtime": "^6.5.0",
     "chalk": "^2.3.0",
     "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.12.2",
     "jest": "^22.0.4",
     "jest-dashboard": "^0.2.1",
     "node-dir": "^0.1.17",
-    "puppeteer": "^0.13.0"
+    "puppeteer": "^0.13.0",
+    "validator": "^9.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

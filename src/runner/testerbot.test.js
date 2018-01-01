@@ -2,18 +2,29 @@ const timeout = 5000
 
 let dir = require('node-dir')
 let path = require('path')
-// let fs = require('fs')
 
 let Page = require('../browser/page')
 
-// let baseConfig = {}
+let userConfig
 
-// Read Config
-let userConfig = require(path.join(__dirname, '../../', 'testerbot.config.js'))
+if (global.TESTERBOT.CONFIG) {
+  const config = require(global.TESTERBOT.CONFIG)
+  userConfig = Object.assign([], config)
+}
+else if (global.TESTERBOT.URL) {
+  userConfig = Object.assign([], [{url: global.TESTERBOT.URL}])
+}
+else if (global.TESTERBOT.URLS) {
+  let urlConfigs = {}
+  for (let url of global.TESTERBOT.URLS) {
+    urlConfigs['url'] = url
+  }
 
-// let config = Object.assign({}, baseConfig, userConfig)
+  userConfig = Object.assign([], urlConfigs)
+}
 
-let testerbotDir = './src/__testerbot__'
+let testerbotDir = path.resolve(__dirname, '../__testerbot__')
+console.log(testerbotDir)
 
 // For each url
 userConfig.forEach(item => {
@@ -30,19 +41,21 @@ userConfig.forEach(item => {
     let files = dir.files(testerbotDir, {sync: true})
 
     // for each test file
-    files.forEach(f => {
+    files.forEach(filePath => {
       // let parent = path.basename(path.dirname(f))
       // read file content
       // let data = fs.readFileSync(f, 'utf8')
 
-      let filePath = path.join(__dirname, '../../', f)
+      //let filePath = f //path.join(__dirname, '../../', f)
 
       var testFile = require(filePath)
 
-      if ((!item.tests.skip || !item.tests.skip.includes(testFile.name)) &&
-        (!item.tests.filter ||
-          item.tests.filter <= 0 ||
-          item.tests.filter.includes(testFile.name))) {
+      if (!testFile.skip &&
+        (!item.tests ||
+          ((!item.tests.skip || !item.tests.skip.includes(testFile.name)) &&
+            (!item.tests.filter ||
+              item.tests.filter <= 0 ||
+              item.tests.filter.includes(testFile.name))))) {
 
         if (Array.isArray(testFile.test)) {
           testFile.test.forEach(testcase => {
