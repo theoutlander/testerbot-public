@@ -15,9 +15,9 @@ else if (global.TESTERBOT.URL) {
   userConfig = Object.assign([], [{url: global.TESTERBOT.URL}])
 }
 else if (global.TESTERBOT.URLS) {
-  let urlConfigs = {}
+  let urlConfigs = []
   for (let url of global.TESTERBOT.URLS) {
-    urlConfigs['url'] = url
+    urlConfigs.push({url: url})
   }
 
   userConfig = Object.assign([], urlConfigs)

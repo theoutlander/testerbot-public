@@ -19,8 +19,9 @@ if (config.program.silent) {
   options.silent = true
 }
 
+// no-verbose
 if (config.program.verbose) {
-  options.verbose = true
+  options.verbose = false
 }
 
 jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })
