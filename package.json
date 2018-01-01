@@ -11,13 +11,13 @@
     "build-watch": "babel ./src --watch --out-dir ./dist --source-maps inline --ignore spec.js,test.js",
     "start": "node ./dist/index.js",
     "start-debug": "node --inspect-brk ./dist/index.js",
-    "static": "static ./tests -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'  &",
-    "test": "concurrently 'npm run static' 'jest --config ./src/jest.config.js'",
-    "test-debug": "concurrently 'npm run static'  'node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js'",
-    "test-watch": "concurrently 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify'",
-    "test-dashboard": "concurrently 'npm run static' 'NODE_ENV=dashboard jest --config ./src/jest.config.js --reporters jest-dashboard'",
-    "test-debug-dashboard": "concurrently npm run static && npm run test-debug -- --reporters jest-dashboard",
-    "test-watch-dashboard": "npm run static && npm run test-watch -- --reporters jest-dashboard"
+    "static": "static -p 8080 ./tests -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'  &",
+    "test": "concurrently --raw 'npm run static' 'jest --config ./src/jest.config.js'",
+    "test-debug": "concurrently --raw 'npm run static'  'node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js'",
+    "test-watch": "concurrently --raw 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify'",
+    "test-dashboard": "concurrently --raw 'npm run static' 'NODE_ENV=dashboard jest --config ./src/jest.config.js --reporters jest-dashboard'",
+    "test-debug-dashboard": "concurrently --raw 'npm run static'  'node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js --reporters jest-dashboard'",
+    "test-watch-dashboard": "concurrently --raw 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify --reporters jest-dashboard'"
   },
   "repository": {
     "type": "git",

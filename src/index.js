@@ -8,14 +8,15 @@ config.process()
 let options = {
   onlyChanged: false,
   config: config.getJestConfig(),
-  globals: JSON.stringify({TESTERBOT: config.getConfig()})
+  globals: JSON.stringify(config.getTestGlobalConfig())
 }
+console.log(options.globals)
 
 if (config.program.dash) {
   options.reporters = ['jest-dashboard']
 }
 
-if (config.program.silent){
+if (config.program.silent) {
   options.silent = true
 }
 

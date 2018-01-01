@@ -1,5 +1,5 @@
 module.exports = {
-  silent: false,
+  silent: true,
   verbose: false,
   globalSetup: './setup.js',
   globalTeardown: './teardown.js',

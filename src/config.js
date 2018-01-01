@@ -25,8 +25,11 @@ class Config {
 
   __validate () {
     this.__hasJestConfig()
-    this.__hasRequiredArguments()
     this.__hasTestFolders()
+
+    if (!this.__hasRequiredArguments()) {
+      program.url = 'http://localhost:3000'
+    }
   }
 
   __hasJestConfig () {
@@ -50,11 +53,13 @@ class Config {
   }
 
   __hasRequiredArguments () {
-    if (!(program.config || program.url || program.urls)) {
-      this.__printHelpMessageAndExit('Config file or URL(s) must be specified')
-    }
+    return (!(program.config || program.url || program.urls))
 
-    return true
+    // if (!(program.config || program.url || program.urls)) {
+    //   //this.__printHelpMessageAndExit('Config file or URL(s) must be specified')
+    // }
+
+    // return true
   }
 
   __hasTesterbotConfig () {
@@ -110,7 +115,7 @@ class Config {
     return [path.resolve(__dirname, 'runner')]
   }
 
-  getConfig () {
+  getTestGlobalConfig () {
     let val = {}
 
     if (program.config && this.__hasTesterbotConfig()) {
@@ -123,7 +128,9 @@ class Config {
       val['URLS'] = program.urls
     }
 
-    return val
+    return {
+      TESTERBOT: val
+    }
   }
 }
 
