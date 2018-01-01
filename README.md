@@ -41,9 +41,13 @@ testerbot [--reporters jest-dashboard]
 
 # Todo
 [ ] Authentication
+
 [ ] Custom Scenarios (workflows)
+
 [ ] Tags
+
 [ ] Custom Reporter
+
 [ ] Automatic Crawling
 
 
