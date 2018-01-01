@@ -61,7 +61,7 @@ class Config {
   }
 
   __hasRequiredArguments () {
-    return (!(program.config || program.url || program.urls))
+    return (program.config || program.url || program.urls)
 
     // if (!(program.config || program.url || program.urls)) {
     //   //this.__printHelpMessageAndExit('Config file or URL(s) must be specified')
@@ -127,13 +127,13 @@ class Config {
     let val = {}
 
     if (program.config && this.__hasTesterbotConfig()) {
-      val['CONFIG'] = this.getTesterbotConfig()
+      val.CONFIG = this.getTesterbotConfig()
     }
     else if (program.url && this.__isValidUrl(program.url)) {
-      val['URL'] = program.url
+      val.URL = program.url
     }
     else if (program.urls && this.__areValidUrls(program.urls)) {
-      val['URLS'] = program.urls
+      val.URLS = program.urls
     }
 
     return {

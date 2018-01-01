@@ -10,7 +10,6 @@ let options = {
   config: config.getJestConfig(),
   globals: JSON.stringify(config.getTestGlobalConfig())
 }
-console.log(options.globals)
 
 if (config.program.dash) {
   options.reporters = ['jest-dashboard']
