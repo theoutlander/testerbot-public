@@ -56,17 +56,17 @@ module.exports = class Head {
     return this.page.query('link[rel="canonical"]')
   }
 
-  async conditional_comments () {
-    return this.page.query('meta[name="viewport"]')
-  }
-
-  async rss_feed () {
-    return this.page.query('meta[name="viewport"]')
-  }
-
-  async inline_critical_css () {
-    return this.page.query('meta[name="viewport"]')
-  }
+  // async conditional_comments () {
+  //   return this.page.query('meta[name="viewport"]')
+  // }
+  //
+  // async rss_feed () {
+  //   return this.page.query('meta[name="viewport"]')
+  // }
+  //
+  // async inline_critical_css () {
+  //   return this.page.query('meta[name="viewport"]')
+  // }
 
   //FB Open Graph
   async facebook_og_title () {
@@ -93,11 +93,12 @@ module.exports = class Head {
     return this.page.query('meta[property="og:description"]')
   }
 
+  // This appears to not exist on FB docs. Deprecated?
   // async facebook_page_id () {
   //   return this.page.query('meta[property="fb:page_id"]')
   // }
 
-  async twitter_og () {
-    return this.page.query('meta[name="viewport"]')
-  }
+  // async twitter_og () {
+  //   return this.page.query('meta[name="viewport"]')
+  // }
 }

@@ -1,11 +1,9 @@
-let Doctype = require('./doctype')
 let Html = require('./html')
 
 module.exports = class Page {
   async goto (url) {
     this.browserPage = await global.__BROWSER__.newPage()
     this.html = new Html(this)
-    this.doctype = new Doctype(this)
 
     await this.browserPage.goto(url)
   }
@@ -13,7 +11,7 @@ module.exports = class Page {
   async query (qs) {
 
     let handle = await this.browserPage.$(qs)
-    if(!handle) {
+    if (!handle) {
       return null
     }
 
@@ -30,8 +28,41 @@ module.exports = class Page {
     return val
   }
 
+  async queryAll (qs) {
+
+    let handles = await this.browserPage.$$(qs)
+    if (!handles) {
+      return null
+    }
+
+    let list = []
+
+    for (let handle of handles) {
+      // let test = await handle.asElement()
+      // let v = await test.jsonValue()
+      let jsHandle = await handle.getProperty('outerHTML')
+
+      if (jsHandle) {
+        list.push(await jsHandle.jsonValue())
+      }
+    }
+
+    // let val = await jsHandle.jsonValue()
+    // let item =  this.browserPage.evaluateHandle((item) => {
+    //   // document.querySelector(query)
+    //   return item
+    // }, handle)
+
+    debugger
+    return list
+  }
+
   async content () {
     return await this.browserPage.content()
+  }
+
+  async getScripts () {
+    return this.queryAll('script')
   }
 
   async getElementByTag (tag) {

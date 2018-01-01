@@ -5,6 +5,6 @@ module.exports = {
   tags: ['META'],
 
   test: (page) => async () => {
-    expect(await page.doctype.markup()).not.toBeNull()
+    expect(await page.content()).toContain('<!DOCTYPE html>')
   }
 }
