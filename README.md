@@ -25,8 +25,44 @@ npm i testerbot -D
 
 ## Usage
 
+### Quick-Start
+
 ```
-testerbot [--reporters jest-dashboard]
+testerbot # It defaults to http://localhost:3000 if you stil the url param
+```
+
+```
+testerbot --url http://localhost:5000
+```
+
+```
+testerbot --urls http://localhost:5000,http://localhost:5000/toc.html
+```
+
+### Testerbot Configuration
+
+```
+// Testerbot Run Configuration
+
+module.exports = [{
+  url:
+    'http://localhost:5000',
+
+  tests: {
+  
+    // Test name(s) go here
+    // These tests will be skipped
+    skip: [
+      'Open Graph'
+    ],
+
+    // Test name(s) go here
+    // These are the only tests to be run
+    filter: [
+      'Viewport' 
+    ]
+  }
+}]
 ```
 
 # Features
