@@ -13,7 +13,9 @@ Automatic Front-End Testing
 
 During development, there isn't enough time to write tests, so our only option is manual testing! We don't need a reminder of how inefficient, time-consuming, error-prone and boring that can get! When we get around to writing test-automations, we spend a lot of time writing tests from scratch. However, most of the test-cases for testing web-applications can be automated and reused.
 
-We created *Testerbot* to automatically test web-applications during the development process. This is a work-in-progress and we would like your help by contributing to this project either via code, testing or feedback.
+We created *Testerbot* to automatically test web-applications during the development process via [Puppeteer](https://github.com/GoogleChrome/puppeteer/) which talks to [Google Chrome Headless Browser](https://developers.google.com/web/updates/2017/04/headless-chrome). 
+
+The basic framework is ready and we have implemented a few test-cases, but we need help in adding more reusable test-cases.
 
 Note: I started this project several months ago and built a SaaS product, but realized that an open-source test automation package is will help catch issues quickly during development. I recently stumbled upon https://frontendchecklist.io/ and created github issues to automate as many of those tests as possible into *Testerbot*.
 
@@ -67,7 +69,7 @@ module.exports = [{
 }]
 ```
 
-# Features
+# Basic Features
 
 - A comprehensive set of pre-defined test cases
 - Support for multiple URL's in a test run
@@ -77,7 +79,8 @@ module.exports = [{
 - Ability to run in CI build process
 
 
-# Todo
+# Todo: Advanced Features
+
 [ ] Authentication
 
 [ ] Custom Scenarios (workflows)
@@ -88,8 +91,21 @@ module.exports = [{
 
 [ ] Automatic Crawling
 
+[ ] Filling Forms
+
 
 # Contribution
+
+This is a work-in-progress and we would like your help. Please consider contributing to this project on one of the following:
+
+- Framework Improvements
+
+- Dashboard Improvements
+
+- Test-Cases (https://github.com/theoutlander/testerbot/issues)
+
+- Provide User Feedack / Bug Reports (https://github.com/theoutlander/testerbot/issues/new)
+
 
 # License
 
