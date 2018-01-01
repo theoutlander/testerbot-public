@@ -24,7 +24,6 @@ else if (global.TESTERBOT.URLS) {
 }
 
 let testerbotDir = path.resolve(__dirname, '../__testerbot__')
-console.log(testerbotDir)
 
 // For each url
 userConfig.forEach(item => {

@@ -19,13 +19,7 @@ module.exports = class Page {
     if (!jsHandle) {
       return null
     }
-    let val = await jsHandle.jsonValue()
-    // let item =  this.browserPage.evaluateHandle((item) => {
-    //   // document.querySelector(query)
-    //   return item
-    // }, handle)
-
-    return val
+    return await jsHandle.jsonValue()
   }
 
   async queryAll (qs) {
@@ -38,8 +32,6 @@ module.exports = class Page {
     let list = []
 
     for (let handle of handles) {
-      // let test = await handle.asElement()
-      // let v = await test.jsonValue()
       let jsHandle = await handle.getProperty('outerHTML')
 
       if (jsHandle) {
@@ -47,13 +39,6 @@ module.exports = class Page {
       }
     }
 
-    // let val = await jsHandle.jsonValue()
-    // let item =  this.browserPage.evaluateHandle((item) => {
-    //   // document.querySelector(query)
-    //   return item
-    // }, handle)
-
-    debugger
     return list
   }
 
