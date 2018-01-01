@@ -6,7 +6,7 @@ Automatic Front-End Testing
 <img src="https://badge.fury.io/js/testerbot.svg">
 <img src="https://img.shields.io/npm/dt/testerbot.svg">
 <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
-<img src="https://img.shields.io/npm/l/testerbot.svg">
+<img src="https://img.shields.io/badge/License-MIT-blue.svg">
 </p>
 
 ## Purpose
