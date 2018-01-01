@@ -17,7 +17,7 @@ We created *Testerbot* to automatically test web-applications during the develop
 
 The basic framework is ready and we have implemented a few test-cases, but we need help in adding more reusable test-cases.
 
-Note: I started this project several months ago and built a SaaS product, but realized that an open-source test automation package is will help catch issues quickly during development. I recently stumbled upon https://frontendchecklist.io/ and created github issues to automate as many of those tests as possible into *Testerbot*.
+Note: I started this project several months ago and built a SaaS product, but realized that an open-source test automation package will help catch issues quickly during development. I recently stumbled upon https://frontendchecklist.io/ and created github issues to automate as many of those tests as possible into *Testerbot*.
 
 ## Install
 
@@ -32,14 +32,17 @@ npm i testerbot -D
 ### Quick-Start
 
 ```
-testerbot # It defaults to http://localhost:3000 if you stil the url param
+# Without any arguments, we default to http://localhost:3000
+testerbot 
 ```
 
 ```
+# Specify a url via --url
 testerbot --url http://localhost:5000
 ```
 
 ```
+# Specify multiple comma seoparated urls via --url
 testerbot --urls http://localhost:5000,http://localhost:5000/toc.html
 ```
 
