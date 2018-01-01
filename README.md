@@ -105,9 +105,9 @@ This is a work-in-progress and we would like your help. Please consider contribu
 
 - Dashboard Improvements
 
-- Test-Cases (https://github.com/theoutlander/testerbot/issues)
+- [Test Cases](https://github.com/theoutlander/testerbot/issues?q=is%3Aissue+is%3Aopen+label%3A%22Test+Case%22)
 
-- Provide User Feedack / Bug Reports (https://github.com/theoutlander/testerbot/issues/new)
+- [Provide User Feedack / Bug Reports](https://github.com/theoutlander/testerbot/issues/new)
 
 
 # License
