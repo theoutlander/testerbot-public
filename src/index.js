@@ -8,9 +8,19 @@ config.process()
 let options = {
   onlyChanged: false,
   config: config.getJestConfig(),
-  // verbose: config.getVerbose(),
-  // silent: config.getSilent(),
   globals: JSON.stringify({TESTERBOT: config.getConfig()})
+}
+
+if (config.program.dash) {
+  options.reporters = ['jest-dashboard']
+}
+
+if (config.program.silent){
+  options.silent = true
+}
+
+if (config.program.verbose) {
+  options.verbose = true
 }
 
 jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })

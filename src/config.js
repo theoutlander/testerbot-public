@@ -6,11 +6,15 @@ let validator = require('validator')
 
 class Config {
   constructor () {
+    this.program = program
     program
       .version('0.1.0')
       .option('-c, --config <path>', 'Specify Testerbot Config file')
       .option('-u, --url <url>', 'Url to run tests against')
       .option('-U, --urls [<url>, <url>...]', 'Url to run tests against')
+      .option('-d, --dash', 'Display results in dashboard')
+      .option('-s, --silent', 'Hide console output from tests')
+      .option('-v, --verbose', 'Display verbose output')
     // .option('-t, --test', 'run tests against mock server')
   }
 
