@@ -29,7 +29,9 @@
     "Test",
     "Selenium",
     "Headless",
-    "tests"
+    "Test Automation",
+    "Front-End Testing",
+    "Front-End-Checklist"
   ],
   "author": "Nick Karnik",
   "license": "MIT",
