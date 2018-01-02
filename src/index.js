@@ -20,7 +20,8 @@ if (config.program.silent) {
 }
 
 // no-verbose
-if (config.program.verbose) {
+if (!config.program.verbose) {
+  console.log(config.program.verbose)
   options.verbose = false
 }
 
