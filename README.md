@@ -46,6 +46,8 @@ testerbot --url http://localhost:5000
 testerbot --urls http://localhost:5000,http://localhost:5000/toc.html
 ```
 
+<img width="1005" alt="screenshot 2018-01-01 16 18 21" src="https://user-images.githubusercontent.com/749084/34472122-6e273c1e-ef0f-11e7-9d83-c2361199ad4a.png">
+
 ### Testerbot Configuration
 
 You can also run *Testerbot* by providing a configuration file which allows you to skip specific tests or run only specific tests. 
@@ -82,6 +84,8 @@ You may also specify a path to the config file via:
 testerbot --config ./config/testerbot.config.js
 ```
 
+# 
+
 # Basic Features
 
 - A comprehensive set of pre-defined test cases
@@ -92,13 +96,13 @@ testerbot --config ./config/testerbot.config.js
 - Ability to run in CI build process
 
 
-# Todo: Advanced Features
+# Todo
 
 [ ] Authentication
 
 [ ] Custom Scenarios (workflows)
 
-[ ] Tags
+[ ] Support for filtering and skipping tests by Tags
 
 [ ] Custom Reporter
 
