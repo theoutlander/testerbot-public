@@ -11,9 +11,9 @@ Automatic Front-End Testing
 
 ## Purpose
 
-During development, there isn't enough time to write tests, so our only option is manual testing! We don't need a reminder of how inefficient, time-consuming, error-prone and boring that can get! When we get around to writing test-automations, we spend a lot of time writing tests from scratch. However, most of the test-cases for testing web-applications can be automated and reused.
+During development, there isn't enough time to write tests, so our only option is manual testing. We don't need a reminder of how inefficient, time-consuming, error-prone and boring that can get. When we get around to writing test-automations, we spend a lot of time writing tests from scratch. However, most of the test-cases for testing web-applications can be automated and reused.
 
-We created *Testerbot* to automatically test web-applications during the development process via [Puppeteer](https://github.com/GoogleChrome/puppeteer/) which talks to [Google Chrome Headless Browser](https://developers.google.com/web/updates/2017/04/headless-chrome). 
+We created *Testerbot* to automatically test web-applications during the development process via [Puppeteer](https://github.com/GoogleChrome/puppeteer/) which talks to [Google Chrome Headless Browser](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
 The basic framework is ready and we have implemented a few test-cases, but we need help in adding more reusable test-cases.
 
