@@ -1,13 +1,12 @@
 # testerbot
 
 Automatic Front-End Testing
-<p>
-<img src="https://img.shields.io/circleci/project/github/theoutlander/testerbot.svg">
-<img src="https://badge.fury.io/js/testerbot.svg">
-<img src="https://img.shields.io/npm/dt/testerbot.svg">
-<img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
-<img src="https://img.shields.io/badge/License-MIT-blue.svg">
-</p>
+
+[![CircleCI](https://img.shields.io/circleci/project/github/theoutlander/testerbot.svg)](https://circleci.com/gh/theoutlander/testerbot)
+[![npm version](https://badge.fury.io/js/testerbot.svg)](https://badge.fury.io/js/testerbot)
+[![npm](https://img.shields.io/npm/dt/testerbot.svg)](https://github.com/theoutlander/testerbot)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![license](https://img.shields.io/github/license/theoutlander/testerbot.svg)](https://github.com/theoutlander/testerbot/blob/master/LICENSE)
 
 ## Purpose
 
