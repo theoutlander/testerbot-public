@@ -13,7 +13,7 @@ Automatic Front-End Testing
 
 During development, there isn't enough time to write tests, so our only option is manual testing. We don't need a reminder of how inefficient, time-consuming, error-prone and boring that can get. When we get around to writing test-automations, we spend a lot of time writing tests from scratch. However, most of the test-cases for testing web-applications can be automated and reused.
 
-We created *Testerbot* to automatically test web-applications during the development process via [Puppeteer](https://github.com/GoogleChrome/puppeteer/) which talks to [Google Chrome Headless Browser](https://developers.google.com/web/updates/2017/04/headless-chrome).
+We created *Testerbot* to automatically test web-applications during the development process via [Puppeteer](https://github.com/GoogleChrome/puppeteer/) which talks to [Headless Google Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
 The basic framework is ready and we have implemented a few test-cases, but we need help in adding more reusable test-cases.
 
@@ -27,32 +27,53 @@ npm i testerbot -D
 
 [![NPM](https://nodei.co/npm/testerbot.png)](https://npmjs.org/package/testerbot)
 
-## Usage
-
-### Quick-Start
+## Quick Start
 
 ```
-# Without any arguments, we default to http://localhost:3000
+# Without any arguments the url defaults to http://localhost:3000
 testerbot 
 ```
 
 ```
-# Specify a url via --url
+# Specify a url via the *--url* argument
 testerbot --url http://localhost:5000
 ```
 
 ```
-# Specify multiple comma seoparated urls via --url
+# Specify multiple comma seoparated urls via the *--urls* argument
 testerbot --urls http://localhost:5000,http://localhost:5000/toc.html
 ```
 
+Here is what the output looks like:
+
 <img width="1005" alt="screenshot 2018-01-01 16 18 21" src="https://user-images.githubusercontent.com/749084/34472122-6e273c1e-ef0f-11e7-9d83-c2361199ad4a.png">
 
-### Testerbot Configuration
 
-You can also run *Testerbot* by providing a configuration file which allows you to skip specific tests or run only specific tests. 
 
-By default, it will look for *testerbot.config.js* in your project root:
+## Command Line Options
+
+```
+  Usage: testerbot [options]
+
+
+  Options:
+
+    -c, --config <path>  Specify Testerbot Config file
+    -d, --dash           Display results in dashboard
+    -n, --no-verbose     Hide verbose output (default: true)
+    -s, --silent         Hide console output from tests
+    -u, --url <url>      Url to run tests against
+    -U, --urls <urls>    Url to run tests against
+    -v, --version        Output the version number
+    -h, --help           output usage information
+```
+
+
+### Configuration File
+
+For better configuration control, you can run *Testerbot* by providing a config file which allows you to skip or run specific tests.
+
+1. By default, Testerbot looks for *testerbot.config.js* in your project root:
 
 ```
 // Testerbot Run Configuration
@@ -78,13 +99,12 @@ module.exports = [{
 }]
 ```
 
-You may also specify a path to the config file via:
+2. You can also specify a path to the config file via:
 
 ```
 testerbot --config ./config/testerbot.config.js
 ```
 
-# 
 
 # Basic Features
 
