@@ -6,6 +6,7 @@ Automatic Front-End Testing
 [![CircleCI](https://img.shields.io/circleci/project/github/theoutlander/testerbot.svg)](https://circleci.com/gh/theoutlander/testerbot)
 [![npm version](https://badge.fury.io/js/testerbot.svg)](https://badge.fury.io/js/testerbot)
 [![npm](https://img.shields.io/npm/dt/testerbot.svg)](https://github.com/theoutlander/testerbot)
+[![NSP Status](https://nodesecurity.io/orgs/theoutlander/projects/7e583a80-3e24-4a83-b280-9c81550f9048/badge)](https://nodesecurity.io/orgs/theoutlander/projects/7e583a80-3e24-4a83-b280-9c81550f9048)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![license](https://img.shields.io/github/license/theoutlander/testerbot.svg)](https://github.com/theoutlander/testerbot/blob/master/LICENSE)
 
