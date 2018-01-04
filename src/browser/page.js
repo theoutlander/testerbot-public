@@ -8,7 +8,7 @@ module.exports = class Page {
     await this.browserPage.goto(url)
   }
 
-  async getFirstOuterHTML (qs) {
+  async query (qs) {
 
     let handle = await this.browserPage.$(qs)
     if (!handle) {
