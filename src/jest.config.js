@@ -7,7 +7,7 @@ module.exports = {
   roots: ["runner"],
   globals: {
     TESTERBOT: {
-      URL: 'http://localhost:8080'
+      CONFIG: '../testerbot.config.js',
     }
   }
 }

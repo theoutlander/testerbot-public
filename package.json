@@ -11,7 +11,7 @@
     "build-watch": "babel ./src --watch --out-dir ./dist --source-maps inline --ignore spec.js,test.js",
     "start": "node ./dist/index.js",
     "start-debug": "node --inspect-brk ./dist/index.js",
-    "static": "static -p 8080 ./tests -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'  &",
+    "static": "static -p 3000 ./tests -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'  &",
     "test": "concurrently -k 'npm run static' 'jest --config ./src/jest.config.js'",
     "test-debug": "concurrently -k 'npm run static'  'node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js'",
     "test-watch": "concurrently -k 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify'",

@@ -48,7 +48,6 @@ userConfig.forEach(item => {
       //let filePath = f //path.join(__dirname, '../../', f)
 
       var testFile = require(filePath)
-
       if (!testFile.skip &&
         (!item.tests ||
           ((!item.tests.skip || !item.tests.skip.includes(testFile.name)) &&

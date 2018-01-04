@@ -125,7 +125,6 @@ class Config {
 
   getTestGlobalConfig () {
     let val = {}
-
     if (program.config && this.__hasTesterbotConfig()) {
       val.CONFIG = this.getTesterbotConfig()
     }

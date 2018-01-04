@@ -8,7 +8,7 @@ module.exports = class Page {
     await this.browserPage.goto(url)
   }
 
-  async query (qs) {
+  async getFirstOuterHTML (qs) {
 
     let handle = await this.browserPage.$(qs)
     if (!handle) {
@@ -22,32 +22,88 @@ module.exports = class Page {
     return await jsHandle.jsonValue()
   }
 
-  async queryAll (qs) {
-
-    let handles = await this.browserPage.$$(qs)
-    if (!handles) {
-      return null
-    }
+  async getOuterHTML (qs) {
+    let handles = await this.getElementHandles(qs)
 
     let list = []
-
     for (let handle of handles) {
       let jsHandle = await handle.getProperty('outerHTML')
-
       if (jsHandle) {
         list.push(await jsHandle.jsonValue())
       }
     }
 
     return list
+
+    // let handles = await this.browserPage.$$(qs)
+    // if (!handles) {
+    //   return null
+    // }
+    //
+    // let list = []
+    //
+    // for (let handle of handles) {
+    //   let jsHandle = await handle.getProperty('outerHTML')
+    //
+    //   if (jsHandle) {
+    //     list.push(await jsHandle.jsonValue())
+    //   }
+    // }
+    //
+    // return list
+  }
+
+  async getAttributeForSelector (selector, attribute) {
+    const results = await this.browserPage.evaluate((selector, attribute) => {
+      const scripts = document.querySelectorAll(selector)
+      if (!attribute) {
+        return scripts
+      }
+
+      return [].map.call(scripts, script => script[attribute])
+    }, selector, attribute)
+
+    return results
+  }
+
+  async getElementHandles (qs) {
+    return await this.browserPage.$$(qs)
+    // if (!handles) {
+    //   return null
+    // }
+    //
+    // let list = []
+    //
+    // for (let handle of handles) {
+    //   let jsHandle = await handle.getProperty('outerHTML')
+    //
+    //   if (jsHandle) {
+    //     //list.push(await jsHandle.jsonValue())
+    //     list.push(jsHandle)
+    //   }
+    // }
+    //
+    // return list
   }
 
   async content () {
     return await this.browserPage.content()
   }
 
-  async getScripts () {
-    return this.queryAll('script')
+  // async getScripts () {
+  //   return this.getOuterHTML('script')
+  // }
+
+  async getScriptsHandles () {
+    return this.queryAllHandles('script')
+  }
+
+  async getAttributes (qs, attrib) {
+    let attributes = await this.browserPage.$$eval('do', script => script())
+    return attributes
+
+    // let attributes = await this.browserPage.$$eval(qs, (item, attrib) => item[attrib], attrib)
+    // return attributes
   }
 
   async getElementByTag (tag) {

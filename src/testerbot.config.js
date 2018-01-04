@@ -7,7 +7,6 @@ module.exports = [{
   tests: {
     // Test name(s) go here
     skip: [
-      'JS Playground'
     ],
 
     // Test name(s) go here
