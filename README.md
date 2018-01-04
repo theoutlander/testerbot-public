@@ -2,6 +2,10 @@
 
 Automatic Front-End Testing
 
+
+### THERE IS A RANDOM ISSUE THAT MANIFESTED CAUSING JEST TO SKIP ALL TESTS UNDER NODE_MODULES. I AM INVESTIGATING THE ISSUE AND WILL PUSH A FIX SOON. ###
+
+
 [![Join the chat at https://gitter.im/theoutlander/testerbot](https://badges.gitter.im/theoutlander/testerbot.svg)](https://gitter.im/theoutlander/testerbot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![CircleCI](https://img.shields.io/circleci/project/github/theoutlander/testerbot.svg)](https://circleci.com/gh/theoutlander/testerbot)
 [![npm version](https://badge.fury.io/js/testerbot.svg)](https://badge.fury.io/js/testerbot)
