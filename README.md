@@ -23,7 +23,7 @@ Note: I started this project several months ago and built a SaaS product, but re
 ## Install
 
 ```
-npm i testerbot -D
+npm i testerbot -g
 ```
 
 [![NPM](https://nodei.co/npm/testerbot.png)](https://npmjs.org/package/testerbot)
