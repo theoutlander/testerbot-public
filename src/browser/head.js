@@ -101,4 +101,18 @@ module.exports = class Head {
   // async twitter_og () {
   //   return this.page.query('meta[name="viewport"]')
   // }
+
+  // Twitter
+
+  async twitter_card() {
+    return this.page.query('meta[name="twitter:card"]')
+  }
+
+  async twitter_site() {
+    return this.page.query('meta[name="twitter:site"]')
+  }
+
+  async twitter_creator() {
+    return this.page.query('meta[name="twitter:creator"]')
+  }
 }

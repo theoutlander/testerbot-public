@@ -1,6 +1,6 @@
 {
   "name": "testerbot",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Automatic Front-End Testing",
   "main": "./src/index.js",
   "bin": {
@@ -46,7 +46,7 @@
     "commander": "^2.12.2",
     "concurrently": "^3.5.1",
     "jest": "^22.0.4",
-    "jest-dashboard": "^0.2.1",
+    "jest-dashboard": "^0.3.0",
     "node-dir": "^0.1.17",
     "pkill": "^2.0.0",
     "puppeteer": "^0.13.0",
