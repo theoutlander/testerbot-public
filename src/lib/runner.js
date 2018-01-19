@@ -36,16 +36,18 @@ module.exports = class Runner {
   // TODO: Should page be passed in?
   addTest (testCase, testFileObject, page) {
     if (!testCase) {
-      describe(`${testFileObject.suite}`, () => {
-        it(`${testFileObject.name}:${testFileObject.desc}`, testFileObject.test(page))
-      })
+      this.addDescribeTest(page,
+        `${testFileObject.suite}`,
+        `${testFileObject.name}:${testFileObject.desc}`,
+        testFileObject.test)
     }
     else {
       // Assuming it's an object if the desc property is defined
       if (testCase.desc) {
-        describe(`${testFileObject.suite}`, () => {
-          it(`${testFileObject.name}:${testCase.desc}`, testCase.test(page))
-        })
+        this.addDescribeTest(page,
+          `${testFileObject.suite}`,
+          `${testFileObject.name}:${testCase.desc}`,
+          testCase.test)
       }
       else {
         let testDesc = Object.keys(testCase)[0]
@@ -56,6 +58,12 @@ module.exports = class Runner {
         })
       }
     }
+  }
+
+  addDescribeTest(page, suite, testName, callback) {
+    describe(suite, () => {
+      it(testName, callback(page))
+    })
   }
 
   addAutoTest (testCase) {
