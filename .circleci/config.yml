@@ -17,13 +17,10 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
+        environment:
+          JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
 
     working_directory: ~/repo
-
-    dependencies:
-      post:
-        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        - chmod +x ./cc-test-reporter
 
     steps:
       - checkout
@@ -42,16 +39,21 @@ jobs:
             - node_modules
           key: v1.1-dependencies-{{ checksum "package.json" }}
 
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
       # run tests!
       - run:
           name: Jest Suite
-          command: npm run test-cover
+          command: |
+            ./cc-test-reporter before-build
+            npm run test-cover
+            ./cc-test-reporter after-build --coverage-input-type junit --exit-code $EXIT_CODE
           environment:
             JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
-          pre:
-            - ./cc-test-reporter before-build
-          post:
-            - ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
       - store_artifacts:
           path: ./coverage
