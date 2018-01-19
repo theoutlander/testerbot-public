@@ -1,0 +1,58 @@
+<testsuites name="jest tests">
+  <testsuite name="Automatic Crawl" errors="0" failures="0" skipped="0" timestamp="2018-01-19T18:47:10" time="1.306" tests="6">
+    <testcase classname="Automatic Crawl http://localhost:3000: Page Load: Passed" name="Automatic Crawl http://localhost:3000: Page Load: Passed" time="0.003">
+    </testcase>
+    <testcase classname="Automatic Crawl http://localhost:3000/privacy-policy: Page Load: Passed" name="Automatic Crawl http://localhost:3000/privacy-policy: Page Load: Passed" time="0.001">
+    </testcase>
+    <testcase classname="Automatic Crawl http://localhost:3000/terms-of-service: Page Load: Passed" name="Automatic Crawl http://localhost:3000/terms-of-service: Page Load: Passed" time="0">
+    </testcase>
+    <testcase classname="Automatic Crawl http://localhost:3000/request-access: Page Load: Passed" name="Automatic Crawl http://localhost:3000/request-access: Page Load: Passed" time="0">
+    </testcase>
+    <testcase classname="Automatic Crawl http://localhost:3000/signin: Page Load: Passed" name="Automatic Crawl http://localhost:3000/signin: Page Load: Passed" time="0">
+    </testcase>
+    <testcase classname="Automatic Crawl http://localhost:3000/: Page Load: Passed" name="Automatic Crawl http://localhost:3000/: Page Load: Passed" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Page: http://localhost:3000" errors="0" failures="0" skipped="0" timestamp="2018-01-19T18:47:12" time="0.77" tests="20">
+    <testcase classname="Page: http://localhost:3000 Head Canonical:Use rel=&quot;canonical&quot; to avoid duplicate content" name="Page: http://localhost:3000 Head Canonical:Use rel=&quot;canonical&quot; to avoid duplicate content" time="0.013">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Charset:The charset declared (UTF-8) is declared correctly" name="Page: http://localhost:3000 Head Charset:The charset declared (UTF-8) is declared correctly" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Doctype:The Doctype is HTML5 and is at the top of all your HTML pages" name="Page: http://localhost:3000 Head Doctype:The Doctype is HTML5 and is at the top of all your HTML pages" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Favicons:Each favicon has been created and displays correctly" name="Page: http://localhost:3000 Head Favicons:Each favicon has been created and displays correctly" time="0.006">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Description:A meta description is provided, it is unique and doesn&apos;t possess more than 150 characters" name="Page: http://localhost:3000 Head Description:A meta description is provided, it is unique and doesn&apos;t possess more than 150 characters" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Title:A title is used on all pages" name="Page: http://localhost:3000 Head Title:A title is used on all pages" time="0.002">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Viewport:The viewport is declared correctly" name="Page: http://localhost:3000 Head Viewport:The viewport is declared correctly" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head Windows Tiles:Windows tiles are present and linked" name="Page: http://localhost:3000 Head Windows Tiles:Windows tiles are present and linked" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Head X-UA-Compatible:The X-UA-Compatible Meta tag is present" name="Page: http://localhost:3000 Head X-UA-Compatible:The X-UA-Compatible Meta tag is present" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Html Language Attribute:The &lt;code&gt;lang&lt;/code&gt; attribute of your website is specified and related to the language of the current page" name="Page: http://localhost:3000 Html Language Attribute:The &lt;code&gt;lang&lt;/code&gt; attribute of your website is specified and related to the language of the current page" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Javascript Defer:Validate that it is used only when a src tag is specified" name="Page: http://localhost:3000 Javascript Defer:Validate that it is used only when a src tag is specified" time="0.007">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Open Graph:Title" name="Page: http://localhost:3000 Social Open Graph:Title" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Open Graph:Type" name="Page: http://localhost:3000 Social Open Graph:Type" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Open Graph:Url;" name="Page: http://localhost:3000 Social Open Graph:Url;" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Open Graph:Image" name="Page: http://localhost:3000 Social Open Graph:Image" time="0.004">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Open Graph:Site Name" name="Page: http://localhost:3000 Social Open Graph:Site Name" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Open Graph:Description" name="Page: http://localhost:3000 Social Open Graph:Description" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Twitter:Card" name="Page: http://localhost:3000 Social Twitter:Card" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Twitter:Site" name="Page: http://localhost:3000 Social Twitter:Site" time="0.003">
+    </testcase>
+    <testcase classname="Page: http://localhost:3000 Social Twitter:Creator" name="Page: http://localhost:3000 Social Twitter:Creator" time="0.003">
+    </testcase>
+  </testsuite>
+</testsuites>
