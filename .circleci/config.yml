@@ -5,6 +5,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: b3b0314251d9874f109c4f4e1c85f0f9d709cee8b2aa090fb425bbcee5130395
     docker:
       # specify the version you desire here
       #- image: circleci/node:8.9.1
@@ -16,6 +18,11 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
+
+#  dependencies:
+#    post:
+#      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#      - chmod +x ./cc-test-reporter
 
     steps:
       - checkout
@@ -35,6 +42,19 @@ jobs:
           key: v1.1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test
+      - run:
+          name: Jest Suite
+          command: npm run test-cover
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+          store_test_results:
+            path: test-results
+
+
+#        pre:
+#          - ./cc-test-reporter before-build
+#
+#        post:
+#          - ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
 
