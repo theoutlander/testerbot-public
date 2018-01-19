@@ -53,7 +53,7 @@ jobs:
           path: ./coverage
           prefix: coverage
 
-     - store_test_results:
+      - store_test_results:
           path: reports/junit
 
       - store_artifacts:
