@@ -53,14 +53,15 @@ module.exports = class Runner {
         let testDesc = Object.keys(testCase)[0]
         let test = testCase[testDesc]
 
-        describe(`${testFileObject.suite}`, () => {
-          it(`${testFileObject.name}:${testDesc}`, test(page))
-        })
+        this.addDescribeTest(page,
+          `${testFileObject.suite}`,
+          `${testFileObject.name}:${testDesc}`,
+          test)
       }
     }
   }
 
-  addDescribeTest(page, suite, testName, callback) {
+  addDescribeTest (page, suite, testName, callback) {
     describe(suite, () => {
       it(testName, callback(page))
     })
