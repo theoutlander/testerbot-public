@@ -6,7 +6,7 @@ module.exports = {
   testEnvironment: './src/puppeteer_environment.js',
   testResultsProcessor: "jest-junit",
   collectCoverage: true,
-  coverageDirectory: "<rootDir>/coverage",
+  coverageDirectory: "<rootDir>/build/logs",
   roots: ["src/runner"],
   haste: {
     providesModuleNodeModules: ["testerbot"]
