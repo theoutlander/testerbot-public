@@ -30,7 +30,7 @@ export default class Runner {
     }
 
     this.runnerDir = path.resolve(__dirname, this.dir)
-    fs.ensureDir(this.runnerDir)
+    fs.ensureDirSync(this.runnerDir)
   }
 
   // TODO: Should page be passed in?
