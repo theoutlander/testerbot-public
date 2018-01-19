@@ -48,6 +48,10 @@ jobs:
           command: npm run test-cover
           environment:
             JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+          pre:
+            - ./cc-test-reporter before-build
+          post:
+            - ./cc-test-reporter after-build --exit-code $EXIT_CODE
 
       - store_artifacts:
           path: ./coverage
@@ -59,10 +63,6 @@ jobs:
       - store_artifacts:
           path: reports/junit
 
-#        pre:
-#          - ./cc-test-reporter before-build
-#
-#        post:
-#          - ./cc-test-reporter after-build --exit-code $EXIT_CODE
+
 
 
