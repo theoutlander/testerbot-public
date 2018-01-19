@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 
-let jest = require('jest')
-let config = require('./config')
+const fs = require('fs')
+const path = require('path')
+const dir = require('node-dir')
+const jest = require('jest')
+const DynamicTestRunner = require('./runner/dynamic.test.runner')
 
+const config = require('./config')
 config.process()
 
 let options = {
   onlyChanged: false,
   config: config.getJestConfig(),
-  globals: JSON.stringify(config.getTestGlobalConfig())
+  globals: config.getTestGlobalConfig()
 }
 
 if (config.program.dash) {
@@ -25,4 +29,20 @@ if (!config.program.verbose) {
   options.verbose = false
 }
 
-jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })
+let dynamicTestsPath = path.resolve(__dirname, './runner/dynamicTests')
+let testFiles = []
+
+if (fs.existsSync(dynamicTestsPath)) {
+  testFiles = dir.files(dynamicTestsPath, {sync: true})
+}
+
+if (testFiles && testFiles.length > 0) {
+  let dynamicTestRunner = new DynamicTestRunner(testFiles, options, path.resolve('./src/tests/__crawler__/auto'))
+  dynamicTestRunner.run()
+    .then(results => {
+      jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })
+    })
+}
+else {
+  jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })
+}

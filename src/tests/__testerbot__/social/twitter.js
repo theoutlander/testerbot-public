@@ -4,7 +4,7 @@
 module.exports = {
   name: 'Twitter',
   desc: 'Twitter Card',
-  suite: 'Head',
+  suite: 'Social',
   tags: ['HTML', 'SEO', 'SOCIAL'],
 
   test: [

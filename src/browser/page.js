@@ -1,11 +1,30 @@
 let Html = require('./html')
 
 module.exports = class Page {
-  async goto (url) {
-    this.browserPage = await global.__BROWSER__.newPage()
-    this.html = new Html(this)
+  constructor (browser) {
+    this.browser = browser || global.__BROWSER__
+  }
 
+  async goto (url) {
+    if(!url) {
+      throw new Error('no url')
+    }
+    // console.log('getting a page ref: ' + url)
+
+    this.browserPage = await this.browser.newPage()
+    // this.browserPage.setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1");
+
+    // console.log('got a new page ref')
+    this.html = new Html(this)
+    // console.log('going to url')
     await this.browserPage.goto(url)
+    // console.log('DONE GOTO............................: ' + url)
+// this.browserPage.close()
+    return this.browserPage
+  }
+
+  getBrowserPage () {
+    return this.browserPage
   }
 
   async query (qs) {
@@ -120,5 +139,53 @@ module.exports = class Page {
 
   async getElementById (tag) {
     return this.browserPage.evaluateHandle((tag) => document.getElementById(tag), tag)
+  }
+
+  async __extractLinks () {
+    console.log('Extracting Links')
+
+    try {
+      debugger
+      let links = await this.browserPage.evaluate(() => {
+        const anchors = Array.from(document.querySelectorAll('a'))
+        return anchors.map(anchor => anchor.href)
+      })
+
+      // 	.then(() => {
+      // console.log("Done extracting links...");
+      // })
+
+        .catch(e => {
+          console.error('In evaluate error: ')
+          console.error(e)
+        })
+
+      // if (false) { //global.config.processor.scraper.domainOnly) {
+      //   console.log("Filtering links");
+      //
+      //   if(!links) {
+      //     console.log("links is null: " + (links == null));
+      //   }
+      //
+      //   this.context.links = links.filter(l => {
+      //     // return l.startsWith("https://" + this.context.domain) || l.startsWith("http://" + this.context.domain);
+      //     return l.indexOf(this.context.domain) >= 0;
+      //   });
+      // }
+      // else {
+      //   //TODO: Handle blank links or those with javascript (Via mouse clicks?)
+      //   this.context.links = links.filter(l => l.trim() != ''
+      //     && l.trim() != 'javascript:void(0);'
+      //     && l.trim() != 'javascript:void(0)');
+      // }
+      return links
+    }
+    catch (e) {
+      console.error('Error extracting links...')
+      console.error(e)
+    }
+    finally {
+      console.log('Done extracting links...')
+    }
   }
 }

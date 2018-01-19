@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Open Graph',
   desc: 'Open Graph meta tags exist on all pages',
-  suite: 'Head',
+  suite: 'Social',
   tags: ['HTML', 'SEO', 'SOCIAL'],
 
   test: [

@@ -1,6 +1,6 @@
 {
   "name": "testerbot",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "Automatic Front-End Testing",
   "main": "./src/index.js",
   "bin": {
@@ -11,13 +11,14 @@
     "build-watch": "babel ./src --watch --out-dir ./dist --source-maps inline --ignore spec.js,test.js",
     "start": "node ./dist/index.js",
     "start-debug": "node --inspect-brk ./dist/index.js",
-    "static": "static -p 3000 ./tests -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'  &",
+    "static": "static -p 3000 ./static -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}'  &",
     "test": "concurrently 'npm run static' 'jest --config ./src/jest.config.js'",
     "test-debug": "concurrently 'npm run static'  'node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js'",
     "test-watch": "concurrently 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify'",
     "test-dashboard": "concurrently 'npm run static' 'NODE_ENV=dashboard jest --config ./src/jest.config.js --reporters jest-dashboard'",
     "test-debug-dashboard": "concurrently 'npm run static'  'node --inspect-brk ./node_modules/.bin/jest --config ./src/jest.config.js --reporters jest-dashboard'",
-    "test-watch-dashboard": "concurrently 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify --reporters jest-dashboard'"
+    "test-watch-dashboard": "concurrently 'npm run static' 'NODE_ENV=test jest --config ./src/jest.config.js --watch --notify --reporters jest-dashboard'",
+    "testerbot": "concurrently 'npm run static' 'node ./src/index.js -c ./src/testerbot.config.js'"
   },
   "repository": {
     "type": "git",
@@ -40,16 +41,19 @@
   },
   "homepage": "https://github.com/theoutlander/testerbot#readme",
   "dependencies": {
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-regenerator-runtime": "^6.5.0",
     "chalk": "^2.3.0",
     "cheerio": "^1.0.0-rc.2",
     "commander": "^2.12.2",
     "concurrently": "^3.5.1",
+    "fs-extra": "^5.0.0",
     "jest": "^22.0.4",
     "jest-dashboard": "^0.3.0",
     "node-dir": "^0.1.17",
+    "parse-domain": "^2.0.0",
     "pkill": "^2.0.0",
-    "puppeteer": "^0.13.0",
+    "puppeteer": "^1.0.0",
     "validator": "^9.2.0"
   },
   "devDependencies": {

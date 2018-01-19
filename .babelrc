@@ -1,5 +1,5 @@
 {
-  "presets": ["babel-preset-env", "stage-0"],
-  "plugins": ["babel-polyfill"]
+  "presets": ["babel-preset-env", "stage-0"]
+//  "plugins": ["babel-polyfill", "transform-regenerator"]
 //  "plugins": ["babel-polyfill", "transform-runtime", "syntax-object-rest-spread", "transform-object-rest-spread"]
 }

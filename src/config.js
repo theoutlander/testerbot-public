@@ -112,6 +112,9 @@ class Config {
   }
 
   getTesterbotConfig () {
+    if(program.config) {
+      return path.resolve(process.cwd(), program.config)
+    }
     return path.resolve(process.cwd(), 'testerbot.config.js')
   }
 

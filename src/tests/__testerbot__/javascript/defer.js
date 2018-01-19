@@ -5,7 +5,7 @@ module.exports = {
   tags: ['JAVASCRIPT', 'PERF'],
   link: 'http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html',
 
-  test: (page) => async () => {
+  test: page => async () => {
 
     // let srcs = await page.getAttributeForSelector('script', 'src')
 

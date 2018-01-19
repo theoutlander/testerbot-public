@@ -15,5 +15,5 @@ module.exports = async function () {
   await global.__BROWSER__.close()
   rimraf.sync(DIR)
 
-  pkill.full('.bin/static -p 3000 ./tests')
+  pkill.full('.bin/static -p 3000 ./static')
 }

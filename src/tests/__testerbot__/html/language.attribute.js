@@ -4,7 +4,7 @@ module.exports = {
   suite: 'Html',
   tags: ['HTML'],
 
-  test: (page) => async () => {
+  test: page => async () => {
     let lang = page.html.language_attribute()
     expect(await lang).not.toBeNull()
   }
