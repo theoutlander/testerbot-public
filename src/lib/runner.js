@@ -5,10 +5,17 @@ let Page = require('../browser/page')
 
 module.exports = class Runner {
   constructor (dir) {
-    this.dir = dir //? dir : '../tests/__testerbot__'
+    this.dir = dir
     this.timeout = 5000
     this.userConfig = null
 
+    this.__createUserConfig()
+
+    this.runnerDir = path.resolve(__dirname, this.dir)
+    fs.ensureDirSync(this.runnerDir)
+  }
+
+  __createUserConfig () {
     if (global.TESTERBOT.CONFIG) {
       const config = require(global.TESTERBOT.CONFIG)
       this.userConfig = Object.assign([], config)
@@ -28,9 +35,6 @@ module.exports = class Runner {
     if (!this.userConfig) {
       throw new Error('User Configuration Not Found')
     }
-
-    this.runnerDir = path.resolve(__dirname, this.dir)
-    fs.ensureDirSync(this.runnerDir)
   }
 
   // TODO: Should page be passed in?
