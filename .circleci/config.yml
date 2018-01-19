@@ -51,13 +51,13 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             npm run test-cover
-            ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+            ./cc-test-reporter after-build -d --coverage-input-type lcov --exit-code $?
           environment:
             #JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
             JEST_JUNIT_OUTPUT: "build/logs/js-test-results.xml"
 
       - store_artifacts:
-          path: ./build/logs
+          path: build/logs
 #          prefix: build/logs
 
       - store_test_results:
