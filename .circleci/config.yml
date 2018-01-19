@@ -7,7 +7,6 @@ jobs:
   build:
     environment:
       CC_TEST_REPORTER_ID: b3b0314251d9874f109c4f4e1c85f0f9d709cee8b2aa090fb425bbcee5130395
-      JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
 
     docker:
       # specify the version you desire here
@@ -47,10 +46,18 @@ jobs:
       - run:
           name: Jest Suite
           command: npm run test-cover
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
 
-      - store_test_results:
-          path: test-results
+      - store_artifacts:
+          path: ./coverage
+          prefix: coverage
 
+     - store_test_results:
+          path: reports/junit
+
+      - store_artifacts:
+          path: reports/junit
 
 #        pre:
 #          - ./cc-test-reporter before-build
