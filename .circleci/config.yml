@@ -57,11 +57,11 @@ jobs:
             JEST_JUNIT_OUTPUT: "build/logs/js-test-results.xml"
 
       - store_artifacts:
-          path: ./build/logs/
-          prefix: coverage
+          path: ./coverage
+          prefix: build/logs
 
       - store_test_results:
-          path: build/logs/reports/junit
+          path: reports/junit
 
       - store_artifacts:
-          path: build/logs/reports/junit
+          path: reports/junit
