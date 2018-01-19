@@ -3,9 +3,9 @@ let path = require('path')
 let fs = require('fs-extra')
 let Page = require('../browser/page')
 
-export default class Runner {
+module.exports = class Runner {
   constructor (dir) {
-    this.dir = dir ? dir : '../tests/__testerbot__'
+    this.dir = dir //? dir : '../tests/__testerbot__'
     this.timeout = 5000
     this.userConfig = null
 
@@ -59,7 +59,7 @@ export default class Runner {
   }
 
   addAutoTest (testCase) {
-    it(testCase.name, () => {
+    it(`${testCase.name}: ${testCase.desc}`, () => {
       expect(testCase.actual).toEqual(testCase.expected)
     })
   }

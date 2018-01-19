@@ -1,11 +1,24 @@
 const fs = require('fs-extra')
 const path = require('path')
 
+const Runner = require('../lib/runner')
+
+// We need this section because this file runs before JestCLI
+// Jest config isn't executed until we run jest
+// This should be in sync with what is in Jest (via a common file perhaps)
+if (!global.TESTERBOT) {
+  global.TESTERBOT = {
+    CONFIG: '../testerbot.config.js',
+  }
+}
+
+const runner = new Runner('../tests/__crawler__')
+
 module.exports = class DynamicTestRunner {
   constructor (testFiles, options, output) {
     this.testFiles = testFiles
     this.options = options
-    this.configObj = require(this.options.globals.TESTERBOT.CONFIG)
+    this.configObj = runner.getUserConfig()
     this.output = output
 
     fs.ensureDirSync(output)
@@ -29,7 +42,6 @@ module.exports = class DynamicTestRunner {
 
           workItems.push(
             new Promise(async (resolve, reject) => {
-              // console.log(configItem.url)
               let results = await obj.run()
               resolve(results)
             })
@@ -41,18 +53,13 @@ module.exports = class DynamicTestRunner {
   }
 
   __createTest (item) {
-    // console.log(item)
     return {
       name: item.url,
-      // desc: 'Use rel="canonical" to avoid duplicate content',
+      desc: `Page Load: ${item.passed ? 'Passed' : 'Failed'}`,
       suite: 'Crawl',
       tags: ['Crawl'],
       actual: item.passed,
       expected: true
-
-      // test: (page) => async () => {
-      //   expect(item.passed).toEqual(true)
-      // }
     }
   }
 
@@ -68,12 +75,8 @@ module.exports = class DynamicTestRunner {
   }
 
   async __serializeTests(tests, prefix) {
-    // console.log(tests.length)
     for(let i=0; i<tests.length; i++)
     {
-      // console.log(tests[i])
-      // console.log("Serializing " + path.join(this.output, i.toString()))
-      // console.log(JSON.stringify(tests[i]))
       fs.outputJsonSync(path.join(this.output, prefix + '_' + i.toString() + '.json'), tests[i])
     }
   }
@@ -84,12 +87,8 @@ module.exports = class DynamicTestRunner {
 
       this.createWorkItems()
         .then(workItems => {
-          // console.log(workItems.length)
           Promise.all(workItems)
             .then(async result => {
-              // console.log('in resolve')
-              // console.log(result)
-
               for(let i=0; i<result.length; i++)
               {
                 let tests = await this.__createDynamicTests(result[i])
@@ -97,14 +96,11 @@ module.exports = class DynamicTestRunner {
               }
 
               resolve(result)
-              // jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })
-              // Call jest CLI when dynamic tests are created
             })
             .catch(err => {
               console.error(err)
               reject(err)
             })
-          // console.log('past promise')
         })
         .catch(err => {
           console.log(err)
