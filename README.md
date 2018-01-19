@@ -26,6 +26,8 @@ Note: I started this project several months ago and built a SaaS product, but re
 npm i testerbot -g
 ```
 
+
+
 [![NPM](https://nodei.co/npm/testerbot.png)](https://npmjs.org/package/testerbot)
 
 ## Quick Start
@@ -119,17 +121,17 @@ testerbot --config ./config/testerbot.config.js
 
 # Todo
 
-[ ] Authentication
+- [ ] Authentication
 
-[ ] Custom Scenarios (workflows)
+- [ ] Custom Scenarios (workflows)
 
-[ ] Support for filtering and skipping tests by Tags
+- [ ] Support for filtering and skipping tests by Tags
 
-[ ] Custom Reporter
+- [ ] Custom Reporter
 
-[ ] Automatic Crawling
+- [X] Automatic Crawling
 
-[ ] Filling Forms
+- [ ] Filling Forms
 
 
 # Contribution
@@ -148,3 +150,13 @@ This is a work-in-progress and we would like your help. Please consider contribu
 # License
 
 MIT License
+
+# FAQ
+
+Why does puppeteer installation fail sometimes with an EACCES error?
+
+This is an npm permissions related issue. 
+Try installing the package with:
+ ```
+ npm i -g testerbot@latest --unsafe-perm
+ ```
