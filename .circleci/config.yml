@@ -61,7 +61,7 @@ jobs:
           prefix: build/logs
 
       - store_test_results:
-          path: reports/junit
+          path: build/logs
 
       - store_artifacts:
-          path: reports/junit
+          path: build/logs
