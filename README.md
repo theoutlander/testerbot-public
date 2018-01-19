@@ -5,12 +5,13 @@ Automatic Front-End Testing
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 [![CircleCI](https://img.shields.io/circleci/project/github/theoutlander/testerbot.svg)](https://circleci.com/gh/theoutlander/testerbot)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![npm version](https://badge.fury.io/js/testerbot.svg)](https://badge.fury.io/js/testerbot)
 [![npm](https://img.shields.io/npm/dt/testerbot.svg)](https://github.com/theoutlander/testerbot)
 [![NSP Status](https://nodesecurity.io/orgs/theoutlander/projects/7e583a80-3e24-4a83-b280-9c81550f9048/badge)](https://nodesecurity.io/orgs/theoutlander/projects/7e583a80-3e24-4a83-b280-9c81550f9048)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![license](https://img.shields.io/github/license/theoutlander/testerbot.svg)](https://github.com/theoutlander/testerbot/blob/master/LICENSE)
 [![Join the chat at https://gitter.im/theoutlander/testerbot](https://badges.gitter.im/theoutlander/testerbot.svg)](https://gitter.im/theoutlander/testerbot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 ## Purpose
 
@@ -27,7 +28,6 @@ Note: I started this project several months ago and built a SaaS product, but re
 ```
 npm i testerbot -g
 ```
-
 
 
 [![NPM](https://nodei.co/npm/testerbot.png)](https://npmjs.org/package/testerbot)
