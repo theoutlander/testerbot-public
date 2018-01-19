@@ -63,6 +63,13 @@ jobs:
       - store_artifacts:
           path: reports/junit
 
+    test:
+      pre:
+        - ./cc-test-reporter before-build
+
+      post:
+        - ./cc-test-reporter after-build --exit-code $EXIT_CODE
+
 
 
 
