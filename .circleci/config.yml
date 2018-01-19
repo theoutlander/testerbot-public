@@ -7,6 +7,8 @@ jobs:
   build:
     environment:
       CC_TEST_REPORTER_ID: b3b0314251d9874f109c4f4e1c85f0f9d709cee8b2aa090fb425bbcee5130395
+      JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+
     docker:
       # specify the version you desire here
       #- image: circleci/node:8.9.1
@@ -19,10 +21,10 @@ jobs:
 
     working_directory: ~/repo
 
-#  dependencies:
-#    post:
-#      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#      - chmod +x ./cc-test-reporter
+  dependencies:
+    post:
+      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - chmod +x ./cc-test-reporter
 
     steps:
       - checkout
@@ -45,10 +47,9 @@ jobs:
       - run:
           name: Jest Suite
           command: npm run test-cover
-          environment:
-            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
-          store_test_results:
-            path: test-results
+
+      - store_test_results:
+          path: test-results
 
 
 #        pre:
