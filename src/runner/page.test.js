@@ -2,45 +2,41 @@ import Runner from '../lib/runner'
 
 let runner = new Runner('../tests/__testerbot__')
 
+let shouldExecuteTest = function (configItem, testFile) {
+  // Check if test file must be skipped
+  // Check if there are tests and they're not marked as skip
+  // If there is a filter defined, that takes priority
+
+  return (!testFile.skip &&
+    (!configItem.tests ||
+      ((!configItem.tests.skip || !configItem.tests.skip.includes(testFile.name)) &&
+        (!configItem.tests.filter ||
+          configItem.tests.filter <= 0 ||
+          configItem.tests.filter.includes(testFile.name)))))
+}
+
 // For each url
-runner.getUserConfig().forEach(item => {
+runner.getUserConfig().forEach(configItem => {
 
   // Create suite
-  describe(`Page: ${item.url}`, () => {
+  describe(`Page: ${configItem.url}`, () => {
     let page = runner.getNewPage()
 
     beforeAll(async () => {
-      await page.goto(item.url)
+      await page.goto(configItem.url)
     }, runner.getTimeout())
 
-    let files = runner.getAllTestFiles()
+    let testFiles = runner.getAllTestFiles()
 
     // for each test file
-    files.forEach(filePath => {
+    testFiles.forEach(testFilePath => {
       // read file content
-      var testFile = require(filePath)
+      var testFile = require(testFilePath)
 
-      // Check if test file must be skipped
-      // Check if there are tests and they're not marked as skip
-      // If there is a filter defined, that takes priority
-      if (!testFile.skip &&
-        (!item.tests ||
-          ((!item.tests.skip || !item.tests.skip.includes(testFile.name)) &&
-            (!item.tests.filter ||
-              item.tests.filter <= 0 ||
-              item.tests.filter.includes(testFile.name))))) {
-
+      if (shouldExecuteTest(configItem, testFile)) {
         // if tests are defined in an array
         if (Array.isArray(testFile.test)) {
           testFile.test.forEach(testcase => {
-            // if(testcase.describe) {
-            //   describe(`${testFile.suite}`, () => {
-            //     console.log("Inside DESCRIBE-------------------")
-            //     //it(`${testFile.name}:${testcase.desc}`, testcase.test(page))
-            //     testcase.test(page)
-            //   })
-            // }
-
             runner.addTest(testcase, testFile, page)
           })
         }

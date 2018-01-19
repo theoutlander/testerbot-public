@@ -5,10 +5,17 @@ let Page = require('../browser/page')
 
 module.exports = class Runner {
   constructor (dir) {
-    this.dir = dir //? dir : '../tests/__testerbot__'
+    this.dir = dir
     this.timeout = 5000
     this.userConfig = null
 
+    this.__createUserConfig()
+
+    this.runnerDir = path.resolve(__dirname, this.dir)
+    fs.ensureDirSync(this.runnerDir)
+  }
+
+  __createUserConfig () {
     if (global.TESTERBOT.CONFIG) {
       const config = require(global.TESTERBOT.CONFIG)
       this.userConfig = Object.assign([], config)
@@ -28,34 +35,40 @@ module.exports = class Runner {
     if (!this.userConfig) {
       throw new Error('User Configuration Not Found')
     }
-
-    this.runnerDir = path.resolve(__dirname, this.dir)
-    fs.ensureDirSync(this.runnerDir)
   }
 
   // TODO: Should page be passed in?
   addTest (testCase, testFileObject, page) {
     if (!testCase) {
-      describe(`${testFileObject.suite}`, () => {
-        it(`${testFileObject.name}:${testFileObject.desc}`, testFileObject.test(page))
-      })
+      this.addDescribeTest(page,
+        `${testFileObject.suite}`,
+        `${testFileObject.name}:${testFileObject.desc}`,
+        testFileObject.test)
     }
     else {
       // Assuming it's an object if the desc property is defined
       if (testCase.desc) {
-        describe(`${testFileObject.suite}`, () => {
-          it(`${testFileObject.name}:${testCase.desc}`, testCase.test(page))
-        })
+        this.addDescribeTest(page,
+          `${testFileObject.suite}`,
+          `${testFileObject.name}:${testCase.desc}`,
+          testCase.test)
       }
       else {
         let testDesc = Object.keys(testCase)[0]
         let test = testCase[testDesc]
 
-        describe(`${testFileObject.suite}`, () => {
-          it(`${testFileObject.name}:${testDesc}`, test(page))
-        })
+        this.addDescribeTest(page,
+          `${testFileObject.suite}`,
+          `${testFileObject.name}:${testDesc}`,
+          test)
       }
     }
+  }
+
+  addDescribeTest (page, suite, testName, callback) {
+    describe(suite, () => {
+      it(testName, callback(page))
+    })
   }
 
   addAutoTest (testCase) {

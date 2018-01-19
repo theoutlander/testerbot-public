@@ -1,5 +1,6 @@
 const CrawlerCache = require('./crawler.cache')
 const URL = require('url')
+const Link = require('../../browser/link')
 
 module.exports = class Crawler {
   constructor (url, options) {
@@ -9,41 +10,14 @@ module.exports = class Crawler {
     this.count = 0
   }
 
-  async __extractLinks () {
-    // console.log('Extracting Links')
-
-    try {
-      let links = await this.options.page.evaluate(() => {
-        const anchors = Array.from(document.querySelectorAll('a'))
-        return anchors.map(anchor => anchor.href)
-      })
-        .catch(e => {
-          console.error('In evaluate error: ')
-          console.error(e)
-        })
-
-      return links
-    }
-    catch (e) {
-      console.error('Error extracting links...')
-      console.error(e)
-    }
-    finally {
-      // console.log('Done extracting links...')
-    }
-  }
-
   async processNext () {
     let crawlJob = this.cache.dequeue()
 
-    // console.log(crawlJob)
     if (!crawlJob || !crawlJob.url) {
-      // console.log('empty job')
       return null
     }
 
     // Load Page
-    // console.log(crawlJob.url)
     try {
       this.count++
 
@@ -52,23 +26,19 @@ module.exports = class Crawler {
         waitUntil: 'load'
       })
 
-      let links = await this.__extractLinks()
+      let links = await Link.extractLinks(this.options.page)
       links.forEach(link => {
         let domain = URL.parse(link).host
-        // console.log("domain for link: " + domain)
-        // console.log("filter domain in options: " + this.options.domain)
         if (domain === this.options.domain) {
           this.cache.enqueue(link)
         }
       })
       crawlJob.passed = true
-      // console.log('RETURNING FROM PROCESS NEXT ++++++++++')
     }
     catch (e) {
       console.error(e)
       crawlJob.passed = false
     }
-    // console.log(crawlJob)
     return crawlJob
   }
 
