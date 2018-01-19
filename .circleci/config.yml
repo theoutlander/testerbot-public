@@ -51,8 +51,7 @@ jobs:
           command: |
             ./cc-test-reporter before-build
             npm run test-cover
-            ./cc-test-reporter after-build --coverage-input-type clover --exit-code 0
-      # $EXIT_CODE
+            ./cc-test-reporter after-build --coverage-input-type clover --prefix reports/coverage --exit-code $?
           environment:
             JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
 
