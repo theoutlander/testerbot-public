@@ -39,30 +39,29 @@ module.exports = class Runner {
 
   // TODO: Should page be passed in?
   addTest (testCase, testFileObject, page) {
+
+    let suite = testFileObject.suite
+    let callback
+    let desc
+    let testName
+
     if (!testCase) {
-      this.addDescribeTest(page,
-        `${testFileObject.suite}`,
-        `${testFileObject.name}:${testFileObject.desc}`,
-        testFileObject.test)
+      desc = testFileObject.desc
+      callback = testFileObject.test
+    }
+    // Assuming it's an object if the desc property is defined
+    else if (testCase.desc) {
+      desc = testCase.desc
+      callback = testCase.test
     }
     else {
-      // Assuming it's an object if the desc property is defined
-      if (testCase.desc) {
-        this.addDescribeTest(page,
-          `${testFileObject.suite}`,
-          `${testFileObject.name}:${testCase.desc}`,
-          testCase.test)
-      }
-      else {
-        let testDesc = Object.keys(testCase)[0]
-        let test = testCase[testDesc]
-
-        this.addDescribeTest(page,
-          `${testFileObject.suite}`,
-          `${testFileObject.name}:${testDesc}`,
-          test)
-      }
+      desc = Object.keys(testCase)[0]
+      callback = testCase[desc]
     }
+
+    testName = `${testFileObject.name}:${desc}`
+
+    this.addDescribeTest(page, suite, testName, callback)
   }
 
   addDescribeTest (page, suite, testName, callback) {
