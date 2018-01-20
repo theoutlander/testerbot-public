@@ -8,10 +8,10 @@ module.exports = {
   haste: {
     providesModuleNodeModules: ["testerbot"]
   },
-  testPathIgnorePatterns: [],
-  globals: {
-    TESTERBOT: {
-      CONFIG: '../testerbot.config.js',
-    }
-  }
+  testPathIgnorePatterns: []
+  // globals: {
+  //   TESTERBOT: {
+  //     CONFIG: '../testerbot.config.js'
+  //   }
+  // }
 }

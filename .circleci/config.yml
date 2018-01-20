@@ -46,8 +46,18 @@ jobs:
             chmod +x ./cc-test-reporter
 
       # run tests!
+      - run: npm run test
+
+      - run: npm run testerbot
+
+      - run: npm run testerbot-no-args
+
+      - run: npm run testerbot-url
+
+      - run: npm run testerbot-urls
+
       - run:
-          name: Jest Suite
+          name: npm test-cover
           command: |
             ./cc-test-reporter before-build
             npm run test-cover

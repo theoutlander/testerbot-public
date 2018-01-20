@@ -4,3 +4,4 @@ dist
 **/__crawler__/auto/**
 **/coverage/*
 *.log
+junit.xml

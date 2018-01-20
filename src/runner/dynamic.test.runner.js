@@ -3,22 +3,11 @@ const path = require('path')
 
 const Runner = require('../lib/runner')
 
-// We need this section because this file runs before JestCLI
-// Jest config isn't executed until we run jest
-// This should be in sync with what is in Jest (via a common file perhaps)
-if (!global.TESTERBOT) {
-  global.TESTERBOT = {
-    CONFIG: '../testerbot.config.js',
-  }
-}
-
-const runner = new Runner('../tests/__crawler__')
-
 module.exports = class DynamicTestRunner {
-  constructor (testFiles, options, output) {
+  constructor (testFiles, output) {
     this.testFiles = testFiles
-    this.options = options
-    this.configObj = runner.getUserConfig()
+    this.runner = new Runner('../tests/__crawler__')
+    this.configObj = this.runner.getUserConfig()
     this.output = output
 
     fs.ensureDirSync(output)

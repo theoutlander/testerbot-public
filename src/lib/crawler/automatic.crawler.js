@@ -17,28 +17,22 @@ module.exports = {
       test: (page) => async () => {
 
         // TODO: Override the time this test will run for
-        console.log("Inside Automatic Crawler Test-------------------")
+        // console.log("Inside Automatic Crawler Test-------------------")
 
         let crawler = new Crawler('http://localhost:3000')
 
         let gen = crawler.getUrl()
 
         let val = gen.next().value
-        console.log(val)
 
         while (val) {
-
-          //it('url: ' + val, (done) => {
-            expect(val).toBeNull() // what if we throw an exception instead??
-          //  done()
-          //})
-
           try {
-
+            expect(val).toBeNull() // what if we throw an exception instead??
           }
           catch (e) {
             console.error(e)
           }
+
           val = gen.next().value
           console.log(val)
         }
