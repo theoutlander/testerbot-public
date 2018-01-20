@@ -160,5 +160,5 @@ Why does puppeteer installation fail sometimes with an EACCES error?
 This is an npm permissions related issue. 
 Try installing the package with:
  ```
- npm i -g testerbot@latest --unsafe-perm
+ sudo npm i -g testerbot@latest --unsafe-perm
  ```
