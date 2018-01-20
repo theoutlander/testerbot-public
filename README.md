@@ -34,18 +34,18 @@ npm i testerbot -g
 
 ## Quick Start
 
+#### Running testerbot without any arguments defaults to http://localhost:3000
 ```
-# Without any arguments the url defaults to http://localhost:3000
 testerbot 
 ```
 
+#### Specify a url via the *--url* argument
 ```
-# Specify a url via the *--url* argument
 testerbot --url http://localhost:5000
 ```
 
+#### Specify multiple comma seoparated urls via the *--urls* argument
 ```
-# Specify multiple comma seoparated urls via the *--urls* argument
 testerbot --urls http://localhost:5000,http://localhost:5000/toc.html
 ```
 
@@ -78,7 +78,7 @@ Here is what the output looks like:
 
 For better configuration control, you can run *Testerbot* by providing a config file which allows you to skip or run specific tests.
 
-1. By default, Testerbot looks for *testerbot.config.js* in your project root:
+#### By default, Testerbot looks for *testerbot.config.js* in your project root:
 
 ```
 // Testerbot Run Configuration
@@ -104,7 +104,7 @@ module.exports = [{
 }]
 ```
 
-2. You can also specify a path to the config file via:
+#### You can also specify a path to the config file via:
 
 ```
 testerbot --config ./config/testerbot.config.js
@@ -160,5 +160,5 @@ Why does puppeteer installation fail sometimes with an EACCES error?
 This is an npm permissions related issue. 
 Try installing the package with:
  ```
- npm i -g testerbot@latest --unsafe-perm
+ sudo npm i -g testerbot@latest --unsafe-perm
  ```
