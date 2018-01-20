@@ -9,10 +9,13 @@ const DynamicTestRunner = require('./runner/dynamic.test.runner')
 const config = require('./config')
 config.process()
 
+global.ARGUMENTS = config.getTestGlobalConfig()
+
 let options = {
   onlyChanged: false,
   config: config.getJestConfig(),
-  globals: config.getTestGlobalConfig()
+  arguments: ARGUMENTS
+  // globals: config.getTestGlobalConfig()
 }
 
 if (config.program.dash) {
@@ -37,7 +40,7 @@ if (fs.existsSync(dynamicTestsPath)) {
 }
 
 if (testFiles && testFiles.length > 0) {
-  let dynamicTestRunner = new DynamicTestRunner(testFiles, options, path.resolve('./src/tests/__crawler__/auto'))
+  let dynamicTestRunner = new DynamicTestRunner(testFiles, path.resolve('./src/tests/__crawler__/auto'))
   dynamicTestRunner.run()
     .then(results => {
       jest.runCLI(options, config.getTestFolders(), success => { console.log(success) })

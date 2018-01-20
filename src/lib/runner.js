@@ -2,10 +2,12 @@ let dir = require('node-dir')
 let path = require('path')
 let fs = require('fs-extra')
 let Page = require('../browser/page')
+let config = require('../config')
 
 module.exports = class Runner {
   constructor (dir) {
     this.dir = dir
+    this.commandline = config.process().getTestGlobalConfig()
     this.timeout = 5000
     this.userConfig = this.__createUserConfig()
     this.runnerDir = path.resolve(__dirname, this.dir)
@@ -13,27 +15,27 @@ module.exports = class Runner {
   }
 
   __createUserConfig () {
-    let configObj
+    let config = this.commandline.TESTERBOT
 
-    if (global.TESTERBOT.CONFIG) {
-      configObj = require(global.TESTERBOT.CONFIG)
+    if (config.CONFIG) {
+      return require(config.CONFIG)
     }
-    else if (global.TESTERBOT.URL) {
-      configObj = [{url: global.TESTERBOT.URL}]
+    else if (config.URL) {
+      return [{url: config.URL}]
     }
-    else if (global.TESTERBOT.URLS) {
+    else if (config.URLS) {
       let urlConfigs = []
-      for (let url of global.TESTERBOT.URLS) {
+      for (let url of config.URLS) {
         urlConfigs.push({url: url})
       }
 
-      configObj = urlConfigs
+      return urlConfigs
     }
     else {
       throw new Error('User Configuration Not Found')
     }
 
-    return Object.assign([], configObj)
+    // return Object.assign([], configObj)
   }
 
   // TODO: Should page be passed in?

@@ -29,6 +29,7 @@ class Config {
   process () {
     program.parse(process.argv)
     this.__validate()
+    return this
   }
 
   __validate () {
@@ -112,10 +113,22 @@ class Config {
   }
 
   getTesterbotConfig () {
-    if(program.config) {
+    // Assuming this is what we pass in our npm test command
+    // For testerbot, this shouldn't be an issue unless their config
+    // was called the same
+    if (program.config && !program.config.includes('jest')) {
       return path.resolve(process.cwd(), program.config)
     }
-    return path.resolve(process.cwd(), 'testerbot.config.js')
+
+    if (fs.existsSync(path.resolve(process.cwd(), 'testerbot.config.js'))) {
+      return path.resolve(process.cwd(), 'testerbot.config.js')
+    }
+    else if(fs.existsSync(path.resolve(process.cwd(), './src/testerbot.config.js')))
+    {
+      return path.resolve(process.cwd(), './src/testerbot.config.js')
+    }
+
+    return null
   }
 
   getJestConfig () {
