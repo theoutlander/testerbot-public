@@ -1,7 +1,7 @@
 //https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started
 //https://blog.kissmetrics.com/open-graph-meta-tags/
 
-import Crawler from './crawler'
+let Crawler = require('./crawler')
 
 module.exports = {
   name: 'Automatic Crawler',

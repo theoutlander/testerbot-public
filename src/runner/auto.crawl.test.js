@@ -1,4 +1,4 @@
-import Runner from '../lib/runner'
+let Runner = require('../lib/runner')
 
 // Create suite
 describe(`Automatic Crawl`, () => {

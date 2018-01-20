@@ -1,4 +1,4 @@
-import Runner from '../lib/runner'
+let Runner = require('../lib/runner')
 
 let runner = new Runner('../tests/__testerbot__')
 
