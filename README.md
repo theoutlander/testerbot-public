@@ -155,10 +155,6 @@ MIT License
 
 # FAQ
 
-Why does puppeteer installation fail sometimes with an EACCES error?
+Why does installation fail sometimes with an EACCES error?
 
-This is an npm permissions related issue. 
-Try installing the package with:
- ```
- sudo npm i -g testerbot@latest --unsafe-perm
- ```
+This is an npm permissions related issue. You will need to change the directory where npm is installed. You can follow instructions at https://docs.npmjs.com/getting-started/fixing-npm-permissions.
