@@ -92,7 +92,7 @@ module.exports = class DynamicTestRunner {
             })
         })
         .catch(err => {
-          console.log(err)
+          console.error(err)
           reject(err)
         })
     })

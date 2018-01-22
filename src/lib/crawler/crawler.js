@@ -17,16 +17,23 @@ module.exports = class Crawler {
       return null
     }
 
+    const page = await this.options.browser.newPage()
+    // page.setRequestInterception(false)
+
     // Load Page
     try {
       this.count++
+      console.log('Loading: ' + crawlJob.url)
 
-      let res = await this.options.page.goto(crawlJob.url, {
-        timeout: 5000,
-        waitUntil: 'load'
+      let res = await page.goto(crawlJob.url, {
+        // timeout: 5000,
+        // waitUntil: 'load'
+        //waitUntil: 'networkidle0'
       })
 
-      let links = await Link.extractLinks(this.options.page)
+      // console.log(res)
+
+      let links = await Link.extractLinks(page)
       links.forEach(link => {
         let domain = URL.parse(link).host
         if (domain === this.options.domain) {
@@ -36,13 +43,19 @@ module.exports = class Crawler {
       crawlJob.passed = true
     }
     catch (e) {
+      this.cache.enqueueFailed(url)
       console.error(e)
       crawlJob.passed = false
+    }
+    finally {
+      page.close()
     }
     return crawlJob
   }
 
   async run () {
+    // TODO: Allow parellization
+
     let allResults = []
     return new Promise(async (resolve, reject) => {
       try {
@@ -53,6 +66,8 @@ module.exports = class Crawler {
           result = await this.processNext()
           allResults.push(result)
         }
+
+        console.log(`Crawled ${this.count} urls~`)
 
         resolve(allResults)
       }

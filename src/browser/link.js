@@ -1,9 +1,20 @@
 module.exports = class Link {
   static async extractLinks (page) {
     try {
+      console.log('Extracting Links')
       let links = await page.evaluate(() => {
+        // TODO: Figure out how to exclude mailto links via query selector
         const anchors = Array.from(document.querySelectorAll('a'))
-        return anchors.map(anchor => anchor.href)
+
+        let hrefs = anchors.map(anchor => anchor.href)
+
+        hrefs = hrefs.filter(href => href !== '')
+        hrefs = hrefs.filter(href => href.toLowerCase().indexOf('mailto:') < 0)
+        hrefs = hrefs.filter(href => href.toLowerCase().indexOf('javascript:') < 0)
+        // hrefs = hrefs.filter(href => href.toLowerCase().indexOf('#') != href.length - 1)
+        // hrefs = hrefs.filter(href => href.toLowerCase().indexOf('#') != href.length-1)
+
+        return hrefs
       })
         .catch(e => {
           console.error('In evaluate error: ')

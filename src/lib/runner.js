@@ -34,8 +34,6 @@ module.exports = class Runner {
     else {
       throw new Error('User Configuration Not Found')
     }
-
-    // return Object.assign([], configObj)
   }
 
   // TODO: Should page be passed in?

@@ -23,6 +23,7 @@ runner.getUserConfig().forEach(configItem => {
     let page = runner.getNewPage()
 
     beforeAll(async () => {
+      console.log(configItem.url)
       await page.goto(configItem.url)
     }, runner.getTimeout())
 

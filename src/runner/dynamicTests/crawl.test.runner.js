@@ -13,21 +13,18 @@ module.exports = class CrawlTest {
       args,
       headless: false,
       ignoreHTTPSErrors: true,
+      dumpio: false, // TODO: make configurable
+      waitUntil: 'load' // networkidle0, networkidle1, ?
     }
 
     await puppeteer.launch(options)
       .then(async browser => {
         this.browser = browser
-        const page = await browser.newPage()
-        page.setRequestInterception(false)
-
         this.crawler = new Crawler(url, {
-          page: page,
+          browser: this.browser,
           domain: URL.parse(url).host,
-          limit: 20
+          limit: 50 // TODO: Make configurable
         })
-
-        this.page = page
       })
       .catch(err => {
         console.error(err)

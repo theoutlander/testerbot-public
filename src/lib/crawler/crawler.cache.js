@@ -16,15 +16,21 @@ module.exports = class CrawlerCache {
   }
 
   dequeue () {
-    return this.queue.pop()
+    return this.queue.shift()
+    // return this.queue.pop()
   }
 
   hasItems() {
     return this.queue.length > 0
   }
 
+  enqueueFailed(url) {
+    this.failed.push(url)
+  }
+
   reset () {
     this.visited = {}
     this.queue = []
+    this.failed = []
   }
 }

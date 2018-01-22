@@ -13,6 +13,7 @@ class Config {
       .option('-c, --config <path>', 'Specify Testerbot Config file')
       .option('-d, --dash', 'Display results in dashboard')
       .option('-s, --silent', 'Hide console output from tests')
+      .option('-t, --test', 'Self-test Testerbot Installation')
       .option('-u, --url <url>', 'Url to run tests against')
       .option('-U, --urls <urls>', 'Url to run tests against', val => val.split(','))
       .option('-n, --no-verbose', 'Hide verbose output')
@@ -28,6 +29,11 @@ class Config {
 
   process () {
     program.parse(process.argv)
+
+    if(program.test) {
+      program.config = './src/testerbot.config.js'
+    }
+
     this.__validate()
     return this
   }

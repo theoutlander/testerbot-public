@@ -17,6 +17,7 @@ module.exports = class Page {
     // console.log('got a new page ref')
     this.html = new Html(this)
     // console.log('going to url')
+    console.log(url)
     await this.browserPage.goto(url)
     // console.log('DONE GOTO............................: ' + url)
 // this.browserPage.close()
