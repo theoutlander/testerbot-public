@@ -2,8 +2,8 @@
 
 Automatic Front-End Testing
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/ca6cd785255660569248/maintainability)](https://codeclimate.com/github/theoutlander/testerbot-public/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/ca6cd785255660569248/test_coverage)](https://codeclimate.com/github/theoutlander/testerbot-public/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/601a270d008a7c4d7d19/maintainability)](https://codeclimate.com/github/theoutlander/testerbot-public/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/601a270d008a7c4d7d19/test_coverage)](https://codeclimate.com/github/theoutlander/testerbot-public/test_coverage)
 [![CircleCI](https://img.shields.io/circleci/project/github/theoutlander/testerbot-public.svg)](https://circleci.com/gh/theoutlander/testerbot-public)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![npm version](https://badge.fury.io/js/testerbot.svg)](https://badge.fury.io/js/testerbot)
